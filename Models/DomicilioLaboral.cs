@@ -9,7 +9,6 @@ namespace theburycode.Models;
 [Table("DomicilioLaboral")]
 public partial class DomicilioLaboral
 {
-    internal readonly string CalleYNumero;
 
     [Key]
     public int ClienteId { get; set; }

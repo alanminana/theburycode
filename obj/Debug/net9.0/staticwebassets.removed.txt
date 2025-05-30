@@ -1,0 +1,5 @@
+D:\github\theburycode\wwwroot\js\componets\cliente-search.js
+D:\github\theburycode\wwwroot\js\componets\detalle-grid.js
+D:\github\theburycode\wwwroot\js\componets\forma-pago-selector.js
+D:\github\theburycode\wwwroot\js\componets\producto-search.js
+D:\github\theburycode\wwwroot\js\componets\test-suite.js.js
