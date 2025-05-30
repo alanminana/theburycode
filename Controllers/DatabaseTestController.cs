@@ -152,7 +152,6 @@ namespace theburycode.Controllers
             }
         }
 
-        // Insertar datos de prueba
         [HttpPost]
         public async Task<IActionResult> InsertTestData()
         {
@@ -186,34 +185,52 @@ namespace theburycode.Controllers
                 };
                 _context.Categoria.Add(subrubro);
 
-                // Insertar marca
+                // Insertar marcas
                 var marca = new Marca
                 {
                     Nombre = "Samsung",
+                    Tipo = "M",
                     UsuarioAlta = "TEST",
                     FechaAlta = DateTime.Now
                 };
                 _context.Marcas.Add(marca);
-                await _context.SaveChangesAsync();
 
-                // Insertar cliente de prueba
-                var cliente = new Cliente
+                var marca2 = new Marca
                 {
-                    Nombre = "Juan",
-                    Apellido = "Pérez",
-                    Dni = "12345678",
-                    Genero = "M",
-                    EstadoCivil = "S",
-                    Email = "juan@test.com",
-                    Celular = "1122334455",
-                    CiudadId = 1, // Asume que existe La Plata
-                    Scoring = 8,
+                    Nombre = "LG",
+                    Tipo = "M",
                     UsuarioAlta = "TEST",
                     FechaAlta = DateTime.Now
                 };
-                _context.Clientes.Add(cliente);
+                _context.Marcas.Add(marca2);
+                await _context.SaveChangesAsync();
 
-                // Insertar proveedor
+                // Insertar múltiples clientes
+                var clientesCreados = new List<int>();
+                for (int i = 1; i <= 5; i++)
+                {
+                    var cliente = new Cliente
+                    {
+                        Nombre = i == 1 ? "Juan" : $"Cliente{i}",
+                        Apellido = i == 1 ? "Pérez" : $"Test{i}",
+                        Dni = $"1234567{i}",
+                        Genero = i % 2 == 0 ? "F" : "M",
+                        EstadoCivil = i % 3 == 0 ? "C" : "S",
+                        Email = $"cliente{i}@test.com",
+                        Celular = $"112233445{i}",
+                        Telefono = $"4444555{i}",
+                        CiudadId = 1, // Asume que existe La Plata
+                        Scoring = 5 + i,
+                        ContactoEmergencia = $"Contacto {i}: 911",
+                        UsuarioAlta = "TEST",
+                        FechaAlta = DateTime.Now
+                    };
+                    _context.Clientes.Add(cliente);
+                    await _context.SaveChangesAsync();
+                    clientesCreados.Add(cliente.Id);
+                }
+
+                // Insertar proveedores
                 var proveedor = new Proveedor
                 {
                     Nombre = "Distribuidora Test SA",
@@ -224,26 +241,98 @@ namespace theburycode.Controllers
                 };
                 _context.Proveedors.Add(proveedor);
 
-                // Insertar producto
-                var producto = new Producto
+                var proveedor2 = new Proveedor
                 {
-                    CodigoNum = 1001,
-                    CodigoAlfaNum = "PROD-1001",
-                    Nombre = "Heladera Samsung 360L",
-                    CategoriaId = subrubro.Id,
-                    MarcaId = marca.Id,
-                    PrecioCosto = 150000,
-                    MargenVentaPct = 30,
-                    DescuentoContadoPct = 10,
-                    IvaPct = 21,
-                    StockActual = 10,
-                    StockMinimo = 2,
+                    Nombre = "Importadora Buenos Aires SRL",
+                    Contacto = "compras@importba.com",
                     Activo = true,
-                    EstadoProducto = "A",
                     UsuarioAlta = "TEST",
                     FechaAlta = DateTime.Now
                 };
-                _context.Productos.Add(producto);
+                _context.Proveedors.Add(proveedor2);
+                await _context.SaveChangesAsync();
+
+                // Insertar múltiples productos
+                var productosCreados = new List<int>();
+                var nombresProductos = new[] {
+            "Heladera Samsung 360L",
+            "Lavarropas LG 8kg",
+            "Microondas Samsung 20L",
+            "Aire Acondicionado LG 3000",
+            "Freezer Vertical Samsung"
+        };
+
+                for (int i = 0; i < 5; i++)
+                {
+                    var producto = new Producto
+                    {
+                        CodigoNum = 1001 + i,
+                        CodigoAlfaNum = $"PROD-{1001 + i}",
+                        Nombre = nombresProductos[i],
+                        CategoriaId = subrubro.Id,
+                        MarcaId = i % 2 == 0 ? marca.Id : marca2.Id,
+                        PrecioCosto = 150000 + (50000 * i),
+                        MargenVentaPct = 30,
+                        DescuentoContadoPct = 10,
+                        IvaPct = 21,
+                        StockActual = 10 + (i * 2),
+                        StockMinimo = 2,
+                        Activo = true,
+                        EstadoProducto = "A",
+                        UsuarioAlta = "TEST",
+                        FechaAlta = DateTime.Now
+                    };
+                    _context.Productos.Add(producto);
+                    await _context.SaveChangesAsync();
+                    productosCreados.Add(producto.Id);
+
+                    // Asociar producto con proveedor
+                    _context.ProveedorProductos.Add(new ProveedorProducto
+                    {
+                        ProductoId = producto.Id,
+                        ProveedorId = i % 2 == 0 ? proveedor.Id : proveedor2.Id,
+                        PrecioCosto = producto.PrecioCosto,
+                        PlazoEntrega = 7,
+                        UsuarioAlta = "TEST",
+                        FechaAlta = DateTime.Now
+                    });
+                }
+
+                // Insertar formas de pago
+                var formasPago = new[] { "Efectivo", "Tarjeta Débito", "Tarjeta Crédito", "Transferencia" };
+                foreach (var fp in formasPago)
+                {
+                    _context.FormaPagos.Add(new FormaPago
+                    {
+                        Descripcion = fp,
+                        UsuarioAlta = "TEST",
+                        FechaAlta = DateTime.Now
+                    });
+                }
+
+                // Insertar bancos
+                var bancos = new[] { "Banco Nación", "Banco Provincia", "Santander", "BBVA" };
+                foreach (var banco in bancos)
+                {
+                    _context.Bancos.Add(new Banco
+                    {
+                        Descripcion = banco,
+                        UsuarioAlta = "TEST",
+                        FechaAlta = DateTime.Now
+                    });
+                }
+
+                // Insertar tipos de tarjeta
+                var tiposTarjeta = new[] { "Visa", "Mastercard", "American Express" };
+                foreach (var tipo in tiposTarjeta)
+                {
+                    _context.TipoTarjeta.Add(new TipoTarjetum
+                    {
+                        Descripcion = tipo,
+                        UsuarioAlta = "TEST",
+                        FechaAlta = DateTime.Now
+                    });
+                }
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
@@ -252,8 +341,14 @@ namespace theburycode.Controllers
                 {
                     success = true,
                     message = "Datos de prueba insertados correctamente",
-                    clienteId = cliente.Id,
-                    productoId = producto.Id
+                    resumen = new
+                    {
+                        clientes = clientesCreados.Count,
+                        productos = productosCreados.Count,
+                        proveedores = 2,
+                        formasPago = formasPago.Length,
+                        bancos = bancos.Length
+                    }
                 });
             }
             catch (Exception ex)
@@ -268,7 +363,6 @@ namespace theburycode.Controllers
                 });
             }
         }
-
         // Consulta de prueba con LINQ
         [HttpGet]
         public async Task<IActionResult> TestQueries()

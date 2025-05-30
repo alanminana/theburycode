@@ -3,8 +3,48 @@
   "WorkspaceRootPath": "D:\\github\\theburycode\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\services\\shared\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:services\\shared\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\views\\home\\vuetest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:views\\home\\vuetest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\wwwroot\\js\\test\\test-suite.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:wwwroot\\js\\test\\test-suite.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\services\\shared\\formapagoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:services\\shared\\formapagoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\models\\theburycodecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:models\\theburycodecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\controllers\\databasetestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:controllers\\databasetestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\viewmodel\\clienteviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,20 +67,8 @@
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:wwwroot\\js\\components\\producto-search.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\wwwroot\\js\\components\\test-suite.js.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:wwwroot\\js\\components\\test-suite.js.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\views\\cliente\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -75,10 +103,6 @@
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:services\\shared\\iformapagoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\services\\shared\\formapagoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:services\\shared\\formapagoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\controllers\\api\\searchapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:controllers\\api\\searchapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -101,10 +125,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\services\\shared\\comprobanteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:services\\shared\\comprobanteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\services\\shared\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:services\\shared\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\services\\shared\\isearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -146,7 +166,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -154,33 +174,150 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClienteService.cs",
-              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Interfaces\\ClienteService.cs",
-              "RelativeDocumentMoniker": "Services\\Interfaces\\ClienteService.cs",
-              "ToolTip": "D:\\github\\theburycode\\Services\\Interfaces\\ClienteService.cs",
-              "RelativeToolTip": "Services\\Interfaces\\ClienteService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwA8AAAAdAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\github\\theburycode\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T05:28:58.444Z",
+              "WhenOpened": "2025-05-30T14:54:41.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TheBuryCodeContext.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Models\\TheBuryCodeContext.cs",
+              "RelativeDocumentMoniker": "Models\\TheBuryCodeContext.cs",
+              "ToolTip": "D:\\github\\theburycode\\Models\\TheBuryCodeContext.cs",
+              "RelativeToolTip": "Models\\TheBuryCodeContext.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAwHwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T03:12:11.903Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IClienteService.cs",
-              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Implementations\\IClienteService.cs",
-              "RelativeDocumentMoniker": "Services\\Implementations\\IClienteService.cs",
-              "ToolTip": "D:\\github\\theburycode\\Services\\Implementations\\IClienteService.cs",
-              "RelativeToolTip": "Services\\Implementations\\IClienteService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T05:28:50.294Z",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\github\\theburycode\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\github\\theburycode\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAF0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-30T00:55:23.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "test-suite.js",
+              "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\test\\test-suite.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\test\\test-suite.js",
+              "ToolTip": "D:\\github\\theburycode\\wwwroot\\js\\test\\test-suite.js",
+              "RelativeToolTip": "wwwroot\\js\\test\\test-suite.js",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAYwJgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-30T03:25:01.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\github\\theburycode\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T00:25:05.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VueTest.cshtml",
+              "DocumentMoniker": "D:\\github\\theburycode\\Views\\Home\\VueTest.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\VueTest.cshtml",
+              "ToolTip": "D:\\github\\theburycode\\Views\\Home\\VueTest.cshtml",
+              "RelativeToolTip": "Views\\Home\\VueTest.cshtml",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAHsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-30T15:23:39.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SearchService.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\SearchService.cs",
+              "RelativeDocumentMoniker": "Services\\Shared\\SearchService.cs",
+              "ToolTip": "D:\\github\\theburycode\\Services\\Shared\\SearchService.cs",
+              "RelativeToolTip": "Services\\Shared\\SearchService.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAtwDYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T00:52:52.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DatabaseTestController.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Controllers\\DatabaseTestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DatabaseTestController.cs",
+              "ToolTip": "D:\\github\\theburycode\\Controllers\\DatabaseTestController.cs",
+              "RelativeToolTip": "Controllers\\DatabaseTestController.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAUwGwBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T14:55:54.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\github\\theburycode\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "D:\\github\\theburycode\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-30T15:34:07.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FormaPagoService.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\FormaPagoService.cs",
+              "RelativeDocumentMoniker": "Services\\Shared\\FormaPagoService.cs",
+              "ToolTip": "D:\\github\\theburycode\\Services\\Shared\\FormaPagoService.cs",
+              "RelativeToolTip": "Services\\Shared\\FormaPagoService.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAwCgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T00:51:05.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\github\\theburycode\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\github\\theburycode\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAcwEkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-30T15:20:09.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "venta-create.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\components\\venta-create.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\components\\venta-create.js",
@@ -188,51 +325,11 @@
               "RelativeToolTip": "wwwroot\\js\\components\\venta-create.js",
               "ViewState": "AgIAAB0AAAAAAAAAAAAcwCoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-30T05:27:34.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T05:27:34.907Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TheBuryCodeContext.cs",
-              "DocumentMoniker": "D:\\github\\theburycode\\Models\\TheBuryCodeContext.cs",
-              "RelativeDocumentMoniker": "Models\\TheBuryCodeContext.cs",
-              "ToolTip": "D:\\github\\theburycode\\Models\\TheBuryCodeContext.cs",
-              "RelativeToolTip": "Models\\TheBuryCodeContext.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAQwHcAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T03:12:11.903Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\github\\theburycode\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\github\\theburycode\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAswC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T00:25:05.586Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\github\\theburycode\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\github\\theburycode\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAswFgAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-30T00:55:23.033Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "ClienteViewModel.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\ViewModel\\ClienteViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\ClienteViewModel.cs",
@@ -240,12 +337,35 @@
               "RelativeToolTip": "ViewModel\\ClienteViewModel.cs",
               "ViewState": "AgIAAFIAAAAAAAAAAAAcwGgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T00:26:42.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T00:26:42.076Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
+              "Title": "IClienteService.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Implementations\\IClienteService.cs",
+              "RelativeDocumentMoniker": "Services\\Implementations\\IClienteService.cs",
+              "ToolTip": "D:\\github\\theburycode\\Services\\Implementations\\IClienteService.cs",
+              "RelativeToolTip": "Services\\Implementations\\IClienteService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T05:28:50.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ClienteService.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Interfaces\\ClienteService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\ClienteService.cs",
+              "ToolTip": "D:\\github\\theburycode\\Services\\Interfaces\\ClienteService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\ClienteService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwA8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T05:28:58.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "ClienteController.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Controllers\\ClienteController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
@@ -253,12 +373,11 @@
               "RelativeToolTip": "Controllers\\ClienteController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAwBIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T00:25:51.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T00:25:51.95Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Cliente\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Cliente\\Edit.cshtml",
@@ -270,20 +389,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "test-suite.js.js",
-              "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\components\\test-suite.js.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\components\\test-suite.js.js",
-              "ToolTip": "D:\\github\\theburycode\\wwwroot\\js\\components\\test-suite.js.js",
-              "RelativeToolTip": "wwwroot\\js\\components\\test-suite.js.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-30T03:25:01.247Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 15,
               "Title": "producto-search.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\components\\producto-search.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\components\\producto-search.js",
@@ -291,12 +397,11 @@
               "RelativeToolTip": "wwwroot\\js\\components\\producto-search.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-30T00:56:31.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T00:56:31.661Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Ventas\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Ventas\\Create.cshtml",
@@ -304,12 +409,11 @@
               "RelativeToolTip": "Views\\Ventas\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-30T02:55:47.9Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T02:55:47.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Cliente\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Cliente\\Index.cshtml",
@@ -317,12 +421,11 @@
               "RelativeToolTip": "Views\\Cliente\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-30T00:22:43.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T00:22:43.874Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 21,
               "Title": "forma-pago-selector.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\components\\forma-pago-selector.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\components\\forma-pago-selector.js",
@@ -334,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "DocumentoCliente.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Models\\DocumentoCliente.cs",
               "RelativeDocumentMoniker": "Models\\DocumentoCliente.cs",
@@ -346,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
               "Title": "DomicilioLaboral.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Models\\DomicilioLaboral.cs",
               "RelativeDocumentMoniker": "Models\\DomicilioLaboral.cs",
@@ -358,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 24,
               "Title": "IFormaPagoService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\IFormaPagoService.cs",
               "RelativeDocumentMoniker": "Services\\Shared\\IFormaPagoService.cs",
@@ -370,19 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "FormaPagoService.cs",
-              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\FormaPagoService.cs",
-              "RelativeDocumentMoniker": "Services\\Shared\\FormaPagoService.cs",
-              "ToolTip": "D:\\github\\theburycode\\Services\\Shared\\FormaPagoService.cs",
-              "RelativeToolTip": "Services\\Shared\\FormaPagoService.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowDgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T00:51:05.894Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "site.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
@@ -394,7 +485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "SearchApiController.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Controllers\\api\\SearchApiController.cs",
               "RelativeDocumentMoniker": "Controllers\\api\\SearchApiController.cs",
@@ -406,7 +497,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "cliente-search.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\components\\cliente-search.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\components\\cliente-search.js",
@@ -418,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 27,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\github\\theburycode\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -430,7 +521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 28,
               "Title": "VentaViewModel.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\ViewModel\\VentaViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\VentaViewModel.cs",
@@ -442,7 +533,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 29,
               "Title": "detalle-grid.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\components\\detalle-grid.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\components\\detalle-grid.js",
@@ -454,19 +545,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "SearchService.cs",
-              "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\SearchService.cs",
-              "RelativeDocumentMoniker": "Services\\Shared\\SearchService.cs",
-              "ToolTip": "D:\\github\\theburycode\\Services\\Shared\\SearchService.cs",
-              "RelativeToolTip": "Services\\Shared\\SearchService.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAlwHEAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T00:52:52.364Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 31,
               "Title": "ISearchService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\ISearchService.cs",
               "RelativeDocumentMoniker": "Services\\Shared\\ISearchService.cs",
@@ -478,7 +557,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 30,
               "Title": "ComprobanteService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\ComprobanteService.cs",
               "RelativeDocumentMoniker": "Services\\Shared\\ComprobanteService.cs",
@@ -490,7 +569,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 33,
               "Title": "IComprobanteService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\IComprobanteService.cs",
               "RelativeDocumentMoniker": "Services\\Shared\\IComprobanteService.cs",
@@ -502,7 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 32,
               "Title": "PrecioCalculatorService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\PrecioCalculatorService.cs",
               "RelativeDocumentMoniker": "Services\\Shared\\PrecioCalculatorService.cs",
@@ -514,7 +593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 34,
               "Title": "IPrecioCalculatorService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Shared\\IPrecioCalculatorService.cs",
               "RelativeDocumentMoniker": "Services\\Shared\\IPrecioCalculatorService.cs",
@@ -526,7 +605,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 35,
               "Title": "VentaService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Interfaces\\VentaService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\VentaService.cs",
@@ -538,7 +617,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 36,
               "Title": "StockService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Interfaces\\StockService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\StockService.cs",
@@ -550,7 +629,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 37,
               "Title": "IStockService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\Implementations\\IStockService.cs",
               "RelativeDocumentMoniker": "Services\\Implementations\\IStockService.cs",
@@ -562,7 +641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 38,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Cliente\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Cliente\\Create.cshtml",

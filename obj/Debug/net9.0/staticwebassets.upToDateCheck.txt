@@ -4,8 +4,9 @@ wwwroot\js\components\cliente-search.js
 wwwroot\js\components\detalle-grid.js
 wwwroot\js\components\forma-pago-selector.js
 wwwroot\js\components\producto-search.js
-wwwroot\js\components\test-suite.js.js
+wwwroot\js\components\venta-create.js
 wwwroot\js\site.js
+wwwroot\js\test\test-suite.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -66,15 +67,9 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\js\components\venta-create.js
 D:\github\theburycode\wwwroot\css\site.css
 D:\github\theburycode\wwwroot\favicon.ico
-D:\github\theburycode\wwwroot\js\components\cliente-search.js
-D:\github\theburycode\wwwroot\js\components\detalle-grid.js
-D:\github\theburycode\wwwroot\js\components\forma-pago-selector.js
 D:\github\theburycode\wwwroot\js\components\producto-search.js
-D:\github\theburycode\wwwroot\js\components\test-suite.js.js
-D:\github\theburycode\wwwroot\js\site.js
 D:\github\theburycode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 D:\github\theburycode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 D:\github\theburycode\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -134,4 +129,9 @@ D:\github\theburycode\wwwroot\lib\jquery\dist\jquery.slim.js
 D:\github\theburycode\wwwroot\lib\jquery\dist\jquery.slim.min.js
 D:\github\theburycode\wwwroot\lib\jquery\dist\jquery.slim.min.map
 D:\github\theburycode\wwwroot\lib\jquery\LICENSE.txt
+D:\github\theburycode\wwwroot\js\site.js
+D:\github\theburycode\wwwroot\js\components\forma-pago-selector.js
+D:\github\theburycode\wwwroot\js\components\detalle-grid.js
+D:\github\theburycode\wwwroot\js\components\cliente-search.js
 D:\github\theburycode\wwwroot\js\components\venta-create.js
+D:\github\theburycode\wwwroot\js\test\test-suite.js

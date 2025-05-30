@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Test Vue.js";
+}
+
+<div class="container mt-4">
+    <h1>Test Suite Vue.js y JavaScript</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Tests Automáticos</h3>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-primary" onclick="runAllTests()">
+                        <i class="fas fa-play"></i> Ejecutar Todos los Tests
+                    </button>
+                    <button class="btn btn-info" onclick="runComponentTests()">
+                        <i class="fas fa-cube"></i> Test Componentes
+                    </button>
+                    <button class="btn btn-warning" onclick="runApiTests()">
+                        <i class="fas fa-plug"></i> Test APIs
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cliente Search -->
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Test Cliente Search</h4>
+                </div>
+                <div class="card-body">
+                    <div id="testClienteSearch">
+                        <cliente-search v-model="clienteId"
+                                        v-on:cliente-seleccionado="onClienteSeleccionado">
+                        </cliente-search>
+                        <div v-if="clienteSeleccionado" class="mt-3">
+                            <p>
+                                Cliente seleccionado:
+                                @Html.Raw("{{ clienteSeleccionado.nombreCompleto }}")
+                            </p>
+                            <p>
+                                ID:
+                                @Html.Raw("{{ clienteId }}")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto Search -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Test Producto Search</h4>
+                </div>
+                <div class="card-body">
+                    <div id="testProductoSearch">
+                        <producto-search v-on:producto-seleccionado="onProductoSeleccionado">
+                        </producto-search>
+                        <div v-if="productoSeleccionado" class="mt-3">
+                            <p>
+                                Producto:
+                                @Html.Raw("{{ productoSeleccionado.nombre }}")
+                            </p>
+                            <p>
+                                Precio: $
+                                @Html.Raw("{{ productoSeleccionado.precioVenta }}")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detalle Grid -->
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Test Detalle Grid</h4>
+                </div>
+                <div class="card-body">
+                    <div id="testDetalleGrid">
+                        <detalle-grid v-model="detalles"
+                                      v-on:total-changed="onTotalChanged">
+                        </detalle-grid>
+                        <p class="mt-3">
+                            Total: $
+                            @Html.Raw("{{ total }}")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resultados de Tests -->
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Resultados de Tests</h4>
+                </div>
+                <div class="card-body">
+                    <div id="testResults"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/components/cliente-search.js"></script>
+    <script src="~/js/components/producto-search.js"></script>
+    <script src="~/js/components/detalle-grid.js"></script>
+    <script src="~/js/components/forma-pago-selector.js"></script>
+    <script src="~/js/tests/test-suite.js"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        // Cliente Search
+        createApp({
+            data() {
+                return {
+                    clienteId: null,
+                    clienteSeleccionado: null
+                };
+            },
+            methods: {
+                onClienteSeleccionado(cliente) {
+                    this.clienteSeleccionado = cliente;
+                }
+            },
+            components: {
+                'cliente-search': ClienteSearch
+            }
+        }).mount('#testClienteSearch');
+
+        // Producto Search
+        createApp({
+            data() {
+                return {
+                    productoSeleccionado: null
+                };
+            },
+            methods: {
+                onProductoSeleccionado(producto) {
+                    this.productoSeleccionado = producto;
+                }
+            },
+            components: {
+                'producto-search': ProductoSearch
+            }
+        }).mount('#testProductoSearch');
+
+        // Detalle Grid
+        createApp({
+            data() {
+                return {
+                    detalles: [],
+                    total: 0
+                };
+            },
+            methods: {
+                onTotalChanged(nuevoTotal) {
+                    this.total = nuevoTotal;
+                }
+            },
+            components: {
+                'detalle-grid': DetalleGrid
+            }
+        }).mount('#testDetalleGrid');
+    </script>
+}
