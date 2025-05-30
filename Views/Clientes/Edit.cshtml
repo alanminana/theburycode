@@ -1,0 +1,271 @@
+﻿@model theburycode.ViewModels.ClienteViewModel
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-user-edit"></i> Editar Cliente
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i>
+                                    Editando: <strong>@Model.NombreCompleto</strong> - DNI: <strong>@Model.Dni</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Nombre" class="control-label"></label>
+                                    <input asp-for="Nombre" class="form-control" />
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Apellido" class="control-label"></label>
+                                    <input asp-for="Apellido" class="form-control" />
+                                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Dni" class="control-label"></label>
+                                    <input asp-for="Dni" class="form-control" />
+                                    <span asp-validation-for="Dni" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Genero" class="control-label"></label>
+                                    <select asp-for="Genero" class="form-select" asp-items="ViewBag.Generos">
+                                        <option value="">-- Seleccione --</option>
+                                    </select>
+                                    <span asp-validation-for="Genero" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="EstadoCivil" class="control-label"></label>
+                                    <select asp-for="EstadoCivil" class="form-select" asp-items="ViewBag.EstadosCiviles">
+                                        <option value="">-- Seleccione --</option>
+                                    </select>
+                                    <span asp-validation-for="EstadoCivil" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="FechaNacimiento" class="control-label"></label>
+                                    <input asp-for="FechaNacimiento" class="form-control" type="date" />
+                                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Scoring" class="control-label"></label>
+                                    <div class="input-group">
+                                        <input asp-for="Scoring" class="form-control" type="number" min="1" max="10" />
+                                        <span class="input-group-text" id="scoringDisplay">
+                                            @if (Model.Scoring.HasValue)
+                                            {
+                                                var scoringClass = Model.Scoring >= 8 ? "text-success" : Model.Scoring >= 5 ? "text-warning" : "text-danger";
+                                                <span class="@scoringClass">
+                                                    <i class="fas fa-star"></i> @Model.Scoring
+                                                </span>
+                                            }
+                                        </span>
+                                    </div>
+                                    <span asp-validation-for="Scoring" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <h5><i class="fas fa-address-book"></i> Información de Contacto</h5>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" type="email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Telefono" class="control-label"></label>
+                                    <input asp-for="Telefono" class="form-control" />
+                                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Celular" class="control-label"></label>
+                                    <input asp-for="Celular" class="form-control" />
+                                    <span asp-validation-for="Celular" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="control-label">Provincia</label>
+                                    <select id="provinciaSelect" class="form-select" asp-items="ViewBag.Provincias">
+                                        <option value="">-- Seleccione Provincia --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="CiudadId" class="control-label"></label>
+                                    <select asp-for="CiudadId" class="form-select" asp-items="ViewBag.Ciudades">
+                                        <option value="">-- Seleccione Ciudad --</option>
+                                    </select>
+                                    <span asp-validation-for="CiudadId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label asp-for="ContactoEmergencia" class="control-label"></label>
+                                    <input asp-for="ContactoEmergencia" class="form-control" />
+                                    <span asp-validation-for="ContactoEmergencia" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Notas" class="control-label"></label>
+                                    <textarea asp-for="Notas" class="form-control" rows="3"></textarea>
+                                    <span asp-validation-for="Notas" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Guardar Cambios
+                                </button>
+                                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-info">
+                                    <i class="fas fa-eye"></i> Ver Detalles
+                                </a>
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="fas fa-list"></i> Volver al Listado
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            // Guardar la ciudad actual
+            var ciudadActual = @Model.CiudadId;
+
+            // Cargar ciudades cuando se selecciona provincia
+            $('#provinciaSelect').change(function() {
+                var provinciaId = $(this).val();
+                var ciudadSelect = $('#CiudadId');
+
+                ciudadSelect.empty();
+                ciudadSelect.append('<option value="">-- Seleccione Ciudad --</option>');
+
+                if (provinciaId) {
+                    $.ajax({
+                        url: '@Url.Action("GetCiudades", "Cliente")',
+                        type: 'GET',
+                        data: { provinciaId: provinciaId },
+                        success: function(ciudades) {
+                            $.each(ciudades, function(index, ciudad) {
+                                var option = $('<option></option>')
+                                    .attr('value', ciudad.value)
+                                    .text(ciudad.text);
+
+                                // Seleccionar la ciudad actual si coincide
+                                if (ciudad.value == ciudadActual) {
+                                    option.attr('selected', 'selected');
+                                }
+
+                                ciudadSelect.append(option);
+                            });
+                        }
+                    });
+                }
+            });
+
+            // Si hay una ciudad seleccionada, cargar su provincia
+            if (ciudadActual > 0) {
+                var provinciaId = $('#CiudadId option:selected').data('provincia-id');
+                if (provinciaId) {
+                    $('#provinciaSelect').val(provinciaId).trigger('change');
+                }
+            }
+
+            // Actualizar visualización de scoring
+            $('#Scoring').on('input', function() {
+                var valor = $(this).val();
+                var display = $('#scoringDisplay');
+
+                if (valor >= 1 && valor <= 10) {
+                    var clase = valor >= 8 ? 'text-success' : valor >= 5 ? 'text-warning' : 'text-danger';
+                    display.html('<span class="' + clase + '"><i class="fas fa-star"></i> ' + valor + '</span>');
+                } else {
+                    display.html('');
+                }
+            });
+
+            // Validación de DNI
+            $('#Dni').blur(function() {
+                var dni = $(this).val();
+                var originalDni = '@Model.Dni';
+
+                if (dni && dni !== originalDni) {
+                    // Validar formato
+                    if (!/^\d{7,8}$/.test(dni)) {
+                        $(this).addClass('is-invalid');
+                        $(this).next('.text-danger').text('El DNI debe tener 7 u 8 dígitos');
+                    } else {
+                        $(this).removeClass('is-invalid');
+                        $(this).next('.text-danger').text('');
+                    }
+                }
+            });
+        });
+    </script>
+}
