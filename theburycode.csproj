@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="wwwroot\js\views\" />
   </ItemGroup>
 
 </Project>

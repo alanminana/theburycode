@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "ContainingType": "theburycode.Controllers.Api.SearchApiController",
+    "Method": "BuscarClientes",
+    "RelativePath": "api/search/clientes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "termino",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "theburycode.Controllers.Api.SearchApiController",
+    "Method": "BuscarProductos",
+    "RelativePath": "api/search/productos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "termino",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

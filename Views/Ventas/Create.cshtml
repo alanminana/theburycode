@@ -14,13 +14,12 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label>Cliente</label>
-                    <cliente-search v-model="venta.clienteId"
-                                    @cliente-seleccionado ="onClienteSeleccionado"></cliente-search>
+                    <cliente-search v-model="venta.clienteId" @@cliente-seleccionado="onClienteSeleccionado"></cliente-search>
                 </div>
                 <div class="col-md-6" v-if="cliente">
                     <div class="alert alert-info">
-                        <strong>{{ cliente.nombreCompleto }}</strong><br>
-                        DNI: {{ cliente.dni }} | Scoring: {{ cliente.scoring }}
+                        <strong>{{cliente.nombreCompleto}}</strong><br>
+                        DNI: {{cliente.dni}} | Scoring: {{cliente.scoring}}
                     </div>
                 </div>
             </div>
@@ -31,9 +30,7 @@
             <!-- Productos -->
             <div class="mt-4">
                 <h5>Productos</h5>
-                <detalle-grid v-model="venta.detalles"
-                              @total-changed ="onTotalChanged"
-                              :validar-stock="true"></detalle-grid>
+                <detalle-grid v-model="venta.detalles" @@total-changed="onTotalChanged" :validar-stock="true"></detalle-grid>
             </div>
 
             <!-- Totales -->
@@ -42,15 +39,15 @@
                     <table class="table">
                         <tr>
                             <td>Subtotal:</td>
-                            <td class="text-end">${{ formatPrice(subtotal) }}</td>
+                            <td class="text-end">${{formatPrice(subtotal)}}</td>
                         </tr>
                         <tr>
                             <td>IVA (21%):</td>
-                            <td class="text-end">${{ formatPrice(iva) }}</td>
+                            <td class="text-end">${{formatPrice(iva)}}</td>
                         </tr>
                         <tr>
                             <th>Total:</th>
-                            <th class="text-end">${{ formatPrice(total) }}</th>
+                            <th class="text-end">${{formatPrice(total)}}</th>
                         </tr>
                     </table>
                 </div>
@@ -58,9 +55,7 @@
 
             <!-- Botones -->
             <div class="mt-4">
-                <button @click ="guardarVenta"
-                        :disabled="!puedeGuardar"
-                        class="btn btn-primary">
+                <button @@click="guardarVenta" v-bind:disabled="!puedeGuardar" class="btn btn-primary">
                     <i class="fas fa-save"></i> Guardar Venta
                 </button>
                 <a href="/Venta" class="btn btn-secondary">

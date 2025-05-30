@@ -1,20 +1,9 @@
-// Services/Shared/IFormaPagoService.cs
+// Services/Shared/FormaPagoService.cs
 using Microsoft.EntityFrameworkCore;
 using theburycode.Models;
 
 namespace theburycode.Services.Shared
 {
-
-    public class FormaPagoDto
-    {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public bool RequiereBanco { get; set; }
-        public bool RequiereTarjeta { get; set; }
-        public bool PermiteCuotas { get; set; }
-        public int? MaximoCuotas { get; set; }
-    }
-
     public class FormaPagoService : IFormaPagoService
     {
         private readonly TheBuryCodeContext _context;
@@ -34,7 +23,7 @@ namespace theburycode.Services.Shared
             return await _context.Bancos.ToListAsync();
         }
 
-        public async Task<List<TipoTarjeta>> GetTiposTarjeta()
+        public async Task<List<TipoTarjetum>> GetTiposTarjeta()
         {
             return await _context.TipoTarjeta.ToListAsync();
         }
@@ -43,25 +32,27 @@ namespace theburycode.Services.Shared
         {
             var formaPago = await _context.FormaPagos.FindAsync(formaPagoId);
             if (formaPago == null) return false;
-
-            // Lógica según descripción
-            return formaPago.Descripcion.Contains("Tarjeta") ||
-                   formaPago.Descripcion.Contains("Transferencia");
+            
+            // Lógica según el tipo de forma de pago
+            return formaPago.Descripcion.ToUpper().Contains("TARJETA") || 
+                   formaPago.Descripcion.ToUpper().Contains("TRANSFERENCIA");
         }
 
-        public async Task<FormaPagoDto> GetDatosFormaPago(int formaPagoId)
+        public async Task<FormaPagoDto?> GetDatosFormaPago(int formaPagoId)
         {
             var formaPago = await _context.FormaPagos.FindAsync(formaPagoId);
             if (formaPago == null) return null;
+
+            var descripcion = formaPago.Descripcion.ToUpper();
 
             return new FormaPagoDto
             {
                 Id = formaPago.Id,
                 Descripcion = formaPago.Descripcion,
-                RequiereBanco = formaPago.Descripcion.Contains("Tarjeta") || formaPago.Descripcion.Contains("Transferencia"),
-                RequiereTarjeta = formaPago.Descripcion.Contains("Tarjeta"),
-                PermiteCuotas = formaPago.Descripcion.Contains("Crédito"),
-                MaximoCuotas = formaPago.Descripcion.Contains("Crédito") ? 12 : 1
+                RequiereBanco = descripcion.Contains("TARJETA") || descripcion.Contains("TRANSFERENCIA"),
+                RequiereTarjeta = descripcion.Contains("TARJETA"),
+                PermiteCuotas = descripcion.Contains("TARJETA") || descripcion.Contains("CREDITO"),
+                MaximoCuotas = descripcion.Contains("TARJETA") ? 12 : 1
             };
         }
     }

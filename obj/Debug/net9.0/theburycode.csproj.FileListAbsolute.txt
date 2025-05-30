@@ -59,7 +59,6 @@ D:\github\theburycode\obj\Debug\net9.0\scopedcss\bundle\theburycode.styles.css
 D:\github\theburycode\obj\Debug\net9.0\scopedcss\projectbundle\theburycode.bundle.scp.css
 D:\github\theburycode\obj\Debug\net9.0\compressed\3dabrgxgqv-b9sayid5wm.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\qm08y10wjn-61n19gt1b8.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\g0sxb6o47e-xtxxf3hu2r.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\tg1simtren-bqjiyaj88i.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\9abmikej0b-c2jlpeoesf.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\gpvgmvwak6-erw9l3u2r3.gz
@@ -331,3 +330,10 @@ D:\github\theburycode\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Scripting.resou
 D:\github\theburycode\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\github\theburycode\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\github\theburycode\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\github\theburycode\obj\Debug\net9.0\theburycode.sourcelink.json
+D:\github\theburycode\obj\Debug\net9.0\compressed\dj1lbp4zx8-rmf8g0l572.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\g0sxb6o47e-e5pxtcmquz.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\tcxu7l536n-p69ellt270.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\q4xx039gmp-a9tfy02c30.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\txt9afqxrp-e9ustso99o.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\okm5rkegtl-m9yyt4cx4y.gz

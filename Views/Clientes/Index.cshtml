@@ -16,9 +16,6 @@
                         <a asp-action="Create" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Nuevo Cliente
                         </a>
-                        <button class="btn btn-success" onclick="exportToExcel()">
-                            <i class="fas fa-file-excel"></i> Exportar
-                        </button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -38,22 +35,8 @@
                         </div>
                     }
 
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre, apellido o DNI...">
-                        </div>
-                        <div class="col-md-2">
-                            <select id="scoringFilter" class="form-select">
-                                <option value="">Todos los scoring</option>
-                                <option value="alto">Alto (8-10)</option>
-                                <option value="medio">Medio (5-7)</option>
-                                <option value="bajo">Bajo (1-4)</option>
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover" id="clientesTable">
+                        <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>DNI</th>
@@ -70,29 +53,9 @@
                                 {
                                     <tr>
                                         <td>@item.Dni</td>
-                                        <td>
-                                            <strong>@item.NombreCompleto</strong>
-                                        </td>
-                                        <td>
-                                            @if (!string.IsNullOrEmpty(item.Email))
-                                            {
-                                                <a href="mailto:@item.Email">@item.Email</a>
-                                            }
-                                            else
-                                            {
-                                                <span class="text-muted">Sin email</span>
-                                            }
-                                        </td>
-                                        <td>
-                                            @if (!string.IsNullOrEmpty(item.Celular))
-                                            {
-                                                <a href="tel:@item.Celular">@item.Celular</a>
-                                            }
-                                            else
-                                            {
-                                                <span class="text-muted">Sin celular</span>
-                                            }
-                                        </td>
+                                        <td><strong>@item.NombreCompleto</strong></td>
+                                        <td>@(item.Email ?? "Sin email")</td>
+                                        <td>@(item.Celular ?? "Sin celular")</td>
                                         <td>@item.CiudadNombre</td>
                                         <td class="text-center">
                                             @if (item.Scoring.HasValue)
@@ -107,16 +70,13 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group btn-group-sm" role="group">
-                                                <a asp-action="Details" asp-route-id="@item.Id"
-                                                   class="btn btn-info" title="Ver detalles">
+                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" title="Ver detalles">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a asp-action="Edit" asp-route-id="@item.Id"
-                                                   class="btn btn-warning" title="Editar">
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning" title="Editar">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id"
-                                                   class="btn btn-danger" title="Eliminar">
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" title="Eliminar">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </div>
@@ -131,37 +91,3 @@
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script>
-        $(document).ready(function() {
-            // Filtro de búsqueda
-            $('#searchInput').on('keyup', function() {
-                var value = $(this).val().toLowerCase();
-                $('#clientesTable tbody tr').filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-
-            // Filtro de scoring
-            $('#scoringFilter').on('change', function() {
-                var filter = $(this).val();
-                $('#clientesTable tbody tr').each(function() {
-                    var scoring = parseInt($(this).find('td:eq(5) span').text()) || 0;
-                    var show = true;
-
-                    if (filter === 'alto' && scoring < 8) show = false;
-                    else if (filter === 'medio' && (scoring < 5 || scoring > 7)) show = false;
-                    else if (filter === 'bajo' && scoring > 4) show = false;
-
-                    $(this).toggle(show);
-                });
-            });
-        });
-
-        function exportToExcel() {
-            // Implementar exportación
-            Swal.fire('Información', 'Función de exportación en desarrollo', 'info');
-        }
-    </script>
-}

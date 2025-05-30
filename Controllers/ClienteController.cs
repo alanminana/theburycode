@@ -144,7 +144,7 @@ namespace theburycode.Controllers
                     cliente.Telefono = viewModel.Telefono;
                     cliente.Celular = viewModel.Celular;
                     cliente.Email = viewModel.Email;
-                    cliente.FechaNacimiento = viewModel.FechaNacimiento;
+                    cliente.FechaNacimiento = viewModel.FechaNacimiento.HasValue ? DateOnly.FromDateTime(viewModel.FechaNacimiento.Value) : null;
                     cliente.CiudadId = viewModel.CiudadId;
                     cliente.Scoring = viewModel.Scoring;
                     cliente.ContactoEmergencia = viewModel.ContactoEmergencia;
@@ -291,7 +291,7 @@ namespace theburycode.Controllers
                 Telefono = cliente.Telefono,
                 Celular = cliente.Celular,
                 Email = cliente.Email,
-                FechaNacimiento = cliente.FechaNacimiento,
+                FechaNacimiento = cliente.FechaNacimiento.HasValue ? cliente.FechaNacimiento.Value.ToDateTime(TimeOnly.MinValue) : null,
                 CiudadId = cliente.CiudadId,
                 Scoring = cliente.Scoring,
                 ContactoEmergencia = cliente.ContactoEmergencia,
@@ -300,7 +300,7 @@ namespace theburycode.Controllers
                 ProvinciaNombre = cliente.Ciudad?.Provincia?.Nombre,
                 DomicilioParticular = cliente.DomicilioParticular != null ? new DomicilioViewModel
                 {
-                    CalleYNumero = cliente.DomicilioParticular.CalleNumero,
+                    CalleYNumero = cliente.DomicilioParticular.CalleYnumero, // Cambiar CalleNumero por CalleYnumero
                     DescripcionDomicilio = cliente.DomicilioParticular.DescripcionDomicilio
                 } : null,
                 DomicilioLaboral = cliente.DomicilioLaboral != null ? new DomicilioLaboralViewModel
@@ -327,7 +327,7 @@ namespace theburycode.Controllers
                 Telefono = viewModel.Telefono,
                 Celular = viewModel.Celular,
                 Email = viewModel.Email,
-                FechaNacimiento = viewModel.FechaNacimiento,
+                FechaNacimiento = viewModel.FechaNacimiento.HasValue ? DateOnly.FromDateTime(viewModel.FechaNacimiento.Value) : null, // Corregir esta línea
                 CiudadId = viewModel.CiudadId,
                 Scoring = viewModel.Scoring,
                 ContactoEmergencia = viewModel.ContactoEmergencia,

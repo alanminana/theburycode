@@ -12,10 +12,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TheBuryCodeContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ERPConnection")));
 
-// Opcional: Agregar servicios
+// Servicios
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<IVentaService, VentaService>();
+
 // Servicios compartidos
 builder.Services.AddScoped<IStockService, StockService>();
 builder.Services.AddScoped<IPrecioCalculatorService, PrecioCalculatorService>();
@@ -26,9 +27,7 @@ builder.Services.AddScoped<ISearchService, SearchService>();
 // Agregar controllers de API
 builder.Services.AddControllers();
 
-// En el pipeline
-app.MapControllers(); // Para APIs
-var app = builder.Build();
+var app = builder.Build(); // Asegúrate de que esta línea esté aquí
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -47,5 +46,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Para APIs
+app.MapControllers();
 
 app.Run();
