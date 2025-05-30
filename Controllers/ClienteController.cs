@@ -25,7 +25,7 @@ namespace theburycode.Controllers
         {
             var clientes = await _clienteService.GetAllAsync();
             var viewModels = clientes.Select(c => MapToViewModel(c)).ToList();
-            return View(viewModels);
+            return View("~/Views/Cliente/Index.cshtml", viewModels);
         }
 
         // GET: Cliente/Details/5
@@ -306,7 +306,7 @@ namespace theburycode.Controllers
                 DomicilioLaboral = cliente.DomicilioLaboral != null ? new DomicilioLaboralViewModel
                 {
                     NombreEmpresa = cliente.DomicilioLaboral.NombreEmpresa,
-                    CalleYNumero = cliente.DomicilioLaboral.CalleYNumero,
+                    CalleYNumero = cliente.DomicilioLaboral.CalleYnumero,
                     DescripcionDomicilioLaboral = cliente.DomicilioLaboral.DescripcionDomicilioLaboral,
                     CiudadLaboralId = cliente.DomicilioLaboral.CiudadLaboralId,
                     TelefonoLaboral = cliente.DomicilioLaboral.TelefonoLaboral

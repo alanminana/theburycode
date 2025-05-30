@@ -331,9 +331,10 @@ D:\github\theburycode\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resou
 D:\github\theburycode\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\github\theburycode\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\github\theburycode\obj\Debug\net9.0\theburycode.sourcelink.json
-D:\github\theburycode\obj\Debug\net9.0\compressed\dj1lbp4zx8-rmf8g0l572.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\g0sxb6o47e-e5pxtcmquz.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\tcxu7l536n-p69ellt270.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\q4xx039gmp-a9tfy02c30.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\txt9afqxrp-e9ustso99o.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\okm5rkegtl-m9yyt4cx4y.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\pskya4edpf-a9tfy02c30.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\2l56tqbauo-e9ustso99o.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\lrm87lq2lb-p69ellt270.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\wocefzzp9x-m9yyt4cx4y.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\x1mmk5y3te-rmf8g0l572.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\w4i1rzqtrs-o1yiyvjc96.gz

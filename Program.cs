@@ -6,7 +6,7 @@ using theburycode.Services.Shared;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(); // Esta línea es suficiente
 
 // Configurar Entity Framework
 builder.Services.AddDbContext<TheBuryCodeContext>(options =>
@@ -24,10 +24,7 @@ builder.Services.AddScoped<IComprobanteService, ComprobanteService>();
 builder.Services.AddScoped<IFormaPagoService, FormaPagoService>();
 builder.Services.AddScoped<ISearchService, SearchService>();
 
-// Agregar controllers de API
-builder.Services.AddControllers();
-
-var app = builder.Build(); // Asegúrate de que esta línea esté aquí
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -46,8 +43,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// Para APIs
-app.MapControllers();
 
 app.Run();
