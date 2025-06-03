@@ -1,0 +1,293 @@
+﻿@model theburycode.ViewModels.ProductoViewModel
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-edit"></i> Editar Producto
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-3">
+                        <i class="fas fa-info-circle"></i>
+                        Editando: <strong>@Model.CodigoAlfaNum - @Model.Nombre</strong>
+                    </div>
+
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CodigoNum" />
+                        <input type="hidden" asp-for="CodigoAlfaNum" />
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Nombre" class="control-label"></label>
+                                    <input asp-for="Nombre" class="form-control" />
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="CategoriaId" class="control-label"></label>
+                                    <select asp-for="CategoriaId" class="form-select" asp-items="ViewBag.Categorias">
+                                        <option value="">-- Seleccione --</option>
+                                    </select>
+                                    <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="MarcaId" class="control-label"></label>
+                                    <select asp-for="MarcaId" class="form-select" asp-items="ViewBag.Marcas">
+                                        <option value="">-- Seleccione --</option>
+                                    </select>
+                                    <span asp-validation-for="MarcaId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label asp-for="SubmarcaId" class="control-label"></label>
+                                    <select asp-for="SubmarcaId" class="form-select">
+                                        <option value="">-- Seleccione --</option>
+                                    </select>
+                                    <span asp-validation-for="SubmarcaId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Descripcion" class="control-label"></label>
+                                    <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
+                                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <h5><i class="fas fa-dollar-sign"></i> Precios</h5>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <label asp-for="PrecioCosto" class="control-label"></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input asp-for="PrecioCosto" class="form-control" type="number" step="0.01" />
+                                    </div>
+                                    <span asp-validation-for="PrecioCosto" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <label asp-for="MargenVentaPct" class="control-label"></label>
+                                    <div class="input-group">
+                                        <input asp-for="MargenVentaPct" class="form-control" type="number" step="0.01" />
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <span asp-validation-for="MargenVentaPct" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <label asp-for="DescuentoContadoPct" class="control-label"></label>
+                                    <div class="input-group">
+                                        <input asp-for="DescuentoContadoPct" class="form-control" type="number" step="0.01" />
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <span asp-validation-for="DescuentoContadoPct" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <label asp-for="IvaPct" class="control-label"></label>
+                                    <div class="input-group">
+                                        <input asp-for="IvaPct" class="form-control" type="number" step="0.01" />
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                    <span asp-validation-for="IvaPct" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vista previa de precios -->
+                        <div class="alert alert-info">
+                            <strong>Precios actuales:</strong><br>
+                            Precio Lista: $@Model.PrecioLista.ToString("N2")<br>
+                            Precio Contado: $@Model.PrecioContado.ToString("N2")<br>
+                            Precio Final (con IVA): $@Model.PrecioFinal.ToString("N2")
+                        </div>
+
+                        <div class="alert alert-warning" id="preciosNuevos" style="display:none;">
+                            <strong>Precios nuevos:</strong><br>
+                            Precio Lista: $<span id="precioLista">0.00</span><br>
+                            Precio Contado: $<span id="precioContado">0.00</span><br>
+                            Precio Final (con IVA): $<span id="precioFinal">0.00</span>
+                        </div>
+
+                        <hr />
+                        <h5><i class="fas fa-warehouse"></i> Stock</h5>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="StockActual" class="control-label"></label>
+                                    <input asp-for="StockActual" class="form-control" type="number" />
+                                    <span asp-validation-for="StockActual" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="StockMinimo" class="control-label"></label>
+                                    <input asp-for="StockMinimo" class="form-control" type="number" />
+                                    <span asp-validation-for="StockMinimo" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label>Imagen actual</label>
+                                    @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                                    {
+                                        <div>
+                                            <img src="@Model.ImagenUrl" alt="Imagen producto" style="max-width: 200px;" class="img-thumbnail" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-muted">Sin imagen</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="ImagenFile" class="control-label">Nueva imagen</label>
+                                    <input asp-for="ImagenFile" class="form-control" type="file" accept="image/*" />
+                                    <span asp-validation-for="ImagenFile" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-check mb-3">
+                                    <input asp-for="Activo" class="form-check-input" />
+                                    <label asp-for="Activo" class="form-check-label"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Guardar Cambios
+                                </button>
+                                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-info">
+                                    <i class="fas fa-eye"></i> Ver Detalles
+                                </a>
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="fas fa-list"></i> Volver al Listado
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            // Cargar submarcas iniciales si hay marca seleccionada
+            var marcaActual = @Model.MarcaId;
+            var submarcaActual = @(Model.SubmarcaId ?? 0);
+
+            if (marcaActual > 0) {
+                cargarSubmarcas(marcaActual, submarcaActual);
+            }
+
+            // Cargar submarcas cuando se selecciona marca
+            $('#MarcaId').change(function() {
+                var marcaId = $(this).val();
+                cargarSubmarcas(marcaId, null);
+            });
+
+            function cargarSubmarcas(marcaId, submarcaSeleccionada) {
+                var submarcaSelect = $('#SubmarcaId');
+                submarcaSelect.empty();
+                submarcaSelect.append('<option value="">-- Seleccione --</option>');
+
+                if (marcaId) {
+                    $.ajax({
+                        url: '@Url.Action("GetSubmarcas", "Producto")',
+                        type: 'GET',
+                        data: { marcaId: marcaId },
+                        success: function(submarcas) {
+                            $.each(submarcas, function(index, submarca) {
+                                var option = $('<option></option>')
+                                    .attr('value', submarca.value)
+                                    .text(submarca.text);
+
+                                if (submarcaSeleccionada && submarca.value == submarcaSeleccionada) {
+                                    option.attr('selected', 'selected');
+                                }
+
+                                submarcaSelect.append(option);
+                            });
+                        }
+                    });
+                }
+            }
+
+            // Calcular precios en tiempo real
+            var preciosCambiaron = false;
+
+            function calcularPrecios() {
+                var costo = parseFloat($('#PrecioCosto').val()) || 0;
+                var margen = parseFloat($('#MargenVentaPct').val()) || 0;
+                var descuento = parseFloat($('#DescuentoContadoPct').val()) || 0;
+                var iva = parseFloat($('#IvaPct').val()) || 21;
+
+                var precioLista = costo * (1 + margen / 100);
+                var precioContado = precioLista * (1 - descuento / 100);
+                var precioFinal = precioContado * (1 + iva / 100);
+
+                $('#precioLista').text(precioLista.toFixed(2));
+                $('#precioContado').text(precioContado.toFixed(2));
+                $('#precioFinal').text(precioFinal.toFixed(2));
+
+                // Comparar con precios actuales
+                var cambio = false;
+                if (Math.abs(precioLista - @Model.PrecioLista) > 0.01) cambio = true;
+                if (Math.abs(precioContado - @Model.PrecioContado) > 0.01) cambio = true;
+                if (Math.abs(precioFinal - @Model.PrecioFinal) > 0.01) cambio = true;
+
+                if (cambio) {
+                    $('#preciosNuevos').show();
+                } else {
+                    $('#preciosNuevos').hide();
+                }
+            }
+
+            $('#PrecioCosto, #MargenVentaPct, #DescuentoContadoPct, #IvaPct').on('input', calcularPrecios);
+        });
+    </script>
+}

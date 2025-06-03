@@ -1,0 +1,273 @@
+﻿@model IEnumerable<theburycode.ViewModels.ProductoViewModel>
+@{
+    ViewData["Title"] = "Productos";
+    var filtro = ViewData["Filtro"] as ProductoFiltroViewModel ?? new ProductoFiltroViewModel();
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-box"></i> Listado de Productos
+                    </h3>
+                    <div>
+                        <a asp-action="StockBajo" class="btn btn-warning">
+                            <i class="fas fa-exclamation-triangle"></i> Stock Bajo
+                        </a>
+                        <a asp-action="Create" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Nuevo Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Filtros -->
+                <div class="card-body border-bottom">
+                    <form method="get" asp-action="Index" class="row g-3">
+                        <div class="col-md-3">
+                            <input type="text" name="Busqueda" value="@filtro.Busqueda"
+                                   class="form-control" placeholder="Buscar por código o nombre...">
+                        </div>
+                        <div class="col-md-2">
+                            <select name="CategoriaId" class="form-select">
+                                <option value="">Todas las categorías</option>
+                                @foreach (var cat in ViewBag.Categorias as SelectList)
+                                {
+                                    <option value="@cat.Value" selected="@(cat.Value == filtro.CategoriaId?.ToString())">
+                                        @cat.Text
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="MarcaId" class="form-select">
+                                <option value="">Todas las marcas</option>
+                                @foreach (var marca in ViewBag.Marcas as SelectList)
+                                {
+                                    <option value="@marca.Value" selected="@(marca.Value == filtro.MarcaId?.ToString())">
+                                        @marca.Text
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" name="SoloStockBajo"
+                                       value="true" @(filtro.SoloStockBajo == true ? "checked" : "")>
+                                <label class="form-check-label">
+                                    Solo stock bajo
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Limpiar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-body">
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle"></i> @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle"></i> @TempData["Error"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <!-- Ajuste masivo de precios -->
+                    <div class="mb-3">
+                        <button class="btn btn-sm btn-info" onclick="mostrarAjusteMasivo()">
+                            <i class="fas fa-percentage"></i> Ajuste Masivo de Precios
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover" id="tablaProductos">
+                            <thead>
+                                <tr>
+                                    <th width="30">
+                                        <input type="checkbox" id="checkAll" />
+                                    </th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Marca</th>
+                                    <th class="text-end">Costo</th>
+                                    <th class="text-end">P. Lista</th>
+                                    <th class="text-end">P. Contado</th>
+                                    <th class="text-center">Stock</th>
+                                    <th class="text-center">Estado</th>
+                                    <th class="text-center" width="120">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="checkProducto" value="@item.Id" />
+                                        </td>
+                                        <td>
+                                            <strong>@item.CodigoAlfaNum</strong>
+                                            <br>
+                                            <small class="text-muted">ID: @item.Id</small>
+                                        </td>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.CategoriaNombre</td>
+                                        <td>@item.MarcaNombre</td>
+                                        <td class="text-end">$@item.PrecioCosto?.ToString("N2")</td>
+                                        <td class="text-end">$@item.PrecioLista.ToString("N2")</td>
+                                        <td class="text-end"><strong>$@item.PrecioContado.ToString("N2")</strong></td>
+                                        <td class="text-center">
+                                            @if (item.StockActual < item.StockMinimo)
+                                            {
+                                                <span class="badge bg-danger">@item.StockActual</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-success">@item.StockActual</span>
+                                            }
+                                        </td>
+                                        <td class="text-center">
+                                            @if (item.Activo)
+                                            {
+                                                <span class="badge bg-success">Activo</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary">Inactivo</span>
+                                            }
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a asp-action="Details" asp-route-id="@item.Id"
+                                                   class="btn btn-info" title="Ver detalles">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a asp-action="Edit" asp-route-id="@item.Id"
+                                                   class="btn btn-warning" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id"
+                                                   class="btn btn-danger" title="Eliminar">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajuste Masivo -->
+<div class="modal fade" id="modalAjusteMasivo" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajuste Masivo de Precios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    Seleccione los productos a ajustar marcando las casillas
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tipo de Ajuste</label>
+                    <select id="tipoAjuste" class="form-select">
+                        <option value="AUMENTO">Aumento</option>
+                        <option value="DESCUENTO">Descuento</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Porcentaje</label>
+                    <input type="number" id="porcentajeAjuste" class="form-control"
+                           min="0" max="100" step="0.01" value="10">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="aplicarAjusteMasivo()">
+                    <i class="fas fa-check"></i> Aplicar Ajuste
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Check all
+        $('#checkAll').change(function() {
+            $('.checkProducto').prop('checked', $(this).prop('checked'));
+        });
+
+        function mostrarAjusteMasivo() {
+            const seleccionados = $('.checkProducto:checked').length;
+            if (seleccionados === 0) {
+                Swal.fire('Atención', 'Debe seleccionar al menos un producto', 'warning');
+                return;
+            }
+            $('#modalAjusteMasivo').modal('show');
+        }
+
+        async function aplicarAjusteMasivo() {
+            const productosIds = [];
+            $('.checkProducto:checked').each(function() {
+                productosIds.push(parseInt($(this).val()));
+            });
+
+            const tipoAjuste = $('#tipoAjuste').val();
+            const porcentaje = parseFloat($('#porcentajeAjuste').val());
+
+            if (porcentaje <= 0) {
+                Swal.fire('Error', 'El porcentaje debe ser mayor a 0', 'error');
+                return;
+            }
+
+            try {
+                const response = await axios.post('/Producto/AjustePrecioMasivo', {
+                    productosIds: productosIds,
+                    porcentaje: porcentaje,
+                    tipoAjuste: tipoAjuste
+                });
+
+                if (response.data.success) {
+                    $('#modalAjusteMasivo').modal('hide');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Ajuste aplicado',
+                        text: `Se actualizaron ${response.data.actualizados} productos`,
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire('Error', response.data.error, 'error');
+                }
+            } catch (error) {
+                Swal.fire('Error', 'Error al aplicar el ajuste', 'error');
+            }
+        }
+    </script>
+}

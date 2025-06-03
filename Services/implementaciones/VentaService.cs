@@ -27,7 +27,7 @@ namespace theburycode.Services
                 .ToListAsync();
         }
 
-        public async Task<Venta> GetByIdAsync(int id)
+        public async Task<Venta?> GetByIdAsync(int id)
         {
             return await _context.Venta
                 .Include(v => v.Cliente)
@@ -127,11 +127,11 @@ namespace theburycode.Services
             var prefijo = $"FAC-{fecha:yyyyMMdd}-";
 
             var ultimaFactura = await _context.Venta
-                .Where(v => v.NumeroFactura.StartsWith(prefijo))
-                .OrderByDescending(v => v.NumeroFactura)
-                .FirstOrDefaultAsync();
+    .Where(v => v.NumeroFactura != null && v.NumeroFactura.StartsWith(prefijo))
+       .OrderByDescending(v => v.NumeroFactura)
+    .FirstOrDefaultAsync();
 
-            if (ultimaFactura == null)
+            if (ultimaFactura?.NumeroFactura == null)
             {
                 return $"{prefijo}0001";
             }

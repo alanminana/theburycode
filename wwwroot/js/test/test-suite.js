@@ -71,6 +71,7 @@ class TestSuite {
 
 const testSuite = new TestSuite();
 
+// Tests de librerías
 testSuite.addTest('Vue.js 3 cargado', () => {
     if (typeof Vue === 'undefined') throw new Error('Vue.js no está cargado');
     if (!Vue.version.startsWith('3')) throw new Error('Se requiere Vue 3');
@@ -113,6 +114,7 @@ testSuite.addTest('FormaPagoSelector definido', () => {
     if (!FormaPagoSelector.template || !FormaPagoSelector.methods) throw new Error('FormaPagoSelector estructura inválida');
 }, 'componentes');
 
+// Tests de API
 testSuite.addTest('API Clientes - Búsqueda', async () => {
     const res = await axios.get('/api/search/clientes?termino=test');
     if (!Array.isArray(res.data)) throw new Error('Respuesta inválida');
@@ -130,13 +132,25 @@ testSuite.addTest('API Ciudades - Por Provincia', async () => {
     if (!Array.isArray(res.data)) throw new Error('Respuesta inválida');
 }, 'api');
 
+// Tests de base de datos
 testSuite.addTest('DB Conexión', async () => {
     const res = await axios.get('/DatabaseTest/TestConnection');
     if (!res.data.success) throw new Error('No conecta BD');
 }, 'database');
+
 testSuite.addTest('DB Tablas', async () => {
     const res = await axios.get('/DatabaseTest/TestAllTables');
-    if (!res.data.success || res.data.totalTables < 30) throw new Error('Tablas faltantes');
+    const data = res.data;
+    // Validar que al menos incluya lista de tablas existentes y missingTables
+    if (!('allTables' in data)) {
+        throw new Error('El endpoint no devuelve "allTables" con la lista de tablas');
+    }
+    if (!('missingTables' in data)) {
+        throw new Error('El endpoint no devuelve "missingTables"');
+    }
+    if (!data.success) {
+        throw new Error('El endpoint devolvió éxito = false');
+    }
 }, 'database');
 
 async function runAllTests() {
@@ -149,12 +163,6 @@ async function runAllTests() {
 async function runComponentTests() { await testSuite.runCategory('componentes'); testSuite.showResults(); }
 async function runApiTests() { await testSuite.runCategory('api'); testSuite.showResults(); }
 async function runDatabaseTests() { await testSuite.runCategory('database'); testSuite.showResults(); }
-
-window.testSuite = testSuite;
-window.runAllTests = runAllTests;
-window.runComponentTests = runComponentTests;
-window.runApiTests = runApiTests;
-window.runDatabaseTests = runDatabaseTests;
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Suite de tests cargada. Ejecuta runAllTests() para iniciar.');

@@ -45,7 +45,7 @@ namespace theburycode.Services.Shared
             return ((precioOriginal - precioConDescuento) / precioOriginal) * 100;
         }
 
-        public async Task<PrecioProductoDto> GetPreciosProducto(int productoId)
+        public async Task<PrecioProductoDto?> GetPreciosProducto(int productoId)
         {
             var producto = await _context.Productos.FindAsync(productoId);
             if (producto == null) return null;

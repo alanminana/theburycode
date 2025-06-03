@@ -32,7 +32,7 @@ namespace theburycode.ViewModels
 
     public class TopProductoViewModel
     {
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
         public int CantidadVendida { get; set; }
         public decimal MontoTotal { get; set; }
     }
@@ -40,15 +40,31 @@ namespace theburycode.ViewModels
     public class UltimaOperacionViewModel
     {
         public DateTime Fecha { get; set; }
-        public string Tipo { get; set; }
-        public string Descripcion { get; set; }
+        public string Tipo { get; set; } = string.Empty;
+        public string Descripcion { get; set; } = string.Empty;
         public decimal Monto { get; set; }
     }
 
     public class AlertaViewModel
     {
-        public string Tipo { get; set; } // "warning", "danger", "info"
-        public string Mensaje { get; set; }
+        public string Tipo { get; set; } = string.Empty; // "warning", "danger", "info"
+        public string Mensaje { get; set; } = string.Empty;
         public string? Url { get; set; }
+    }
+    public class WidgetDto
+    {
+        public string Nombre { get; set; } = string.Empty;
+    }
+
+    public class AlertaDto
+    {
+        public string Tipo { get; set; } = string.Empty;
+        public string Descripcion { get; set; } = string.Empty;
+    }
+
+    public class NotificacionDto
+    {
+        public string Tipo { get; set; } = string.Empty;
+        public string Mensaje { get; set; } = string.Empty;
     }
 }

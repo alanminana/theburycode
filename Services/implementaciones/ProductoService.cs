@@ -26,7 +26,7 @@ namespace theburycode.Services
                 .ToListAsync();
         }
 
-        public async Task<Producto> GetByIdAsync(int id)
+        public async Task<Producto?> GetByIdAsync(int id)
         {
             return await _context.Productos
                 .Include(p => p.Categoria)
@@ -75,7 +75,7 @@ namespace theburycode.Services
             var original = await _context.Productos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == producto.Id);
 
             // Log cambio de precio si cambió
-            if (original.PrecioCosto != producto.PrecioCosto)
+            if (original != null && original.PrecioCosto != producto.PrecioCosto)
             {
                 var precioLog = new PrecioLog
                 {
@@ -145,6 +145,7 @@ namespace theburycode.Services
         {
             var precioLista = await CalcularPrecioListaAsync(productoId);
             var producto = await _context.Productos.FindAsync(productoId);
+            if (producto == null) return 0;
 
             var descuento = producto.DescuentoContadoPct ?? 0;
             return precioLista * (1 - descuento / 100);

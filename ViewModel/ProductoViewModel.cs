@@ -15,12 +15,12 @@ namespace theburycode.ViewModels
         [Required(ErrorMessage = "El código alfanumérico es requerido")]
         [StringLength(50)]
         [Display(Name = "Código Producto")]
-        public string CodigoAlfaNum { get; set; }
+        public string CodigoAlfaNum { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El nombre es requerido")]
         [StringLength(200)]
         [Display(Name = "Nombre")]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "La categoría es requerida")]
         [Display(Name = "Categoría (Subrubro)")]
@@ -70,16 +70,31 @@ namespace theburycode.ViewModels
 
         [Display(Name = "Estado")]
         public string EstadoProducto { get; set; } = "A";
+     
 
+        [Display(Name = "Imagen")]
+        public IFormFile? ImagenFile { get; set; }
+
+        public string? ImagenUrl { get; set; }
         // Propiedades calculadas
         public decimal PrecioLista => (PrecioCosto ?? 0) * (1 + (MargenVentaPct ?? 0) / 100);
         public decimal PrecioContado => PrecioLista * (1 - (DescuentoContadoPct ?? 0) / 100);
         public decimal PrecioFinal => PrecioContado * (1 + (IvaPct ?? 21) / 100);
 
-        // Para mostrar
         public string? CategoriaNombre { get; set; }
         public string? MarcaNombre { get; set; }
         public string? SubmarcaNombre { get; set; }
-        public bool StockCritico => StockActual < StockMinimo;
+        public string NombreCompleto => $"{CodigoAlfaNum} - {Nombre}";
+    }
+
+    public class ProductoFiltroViewModel
+    {
+        public string? Busqueda { get; set; }
+        public int? CategoriaId { get; set; }
+        public int? MarcaId { get; set; }
+        public bool? SoloActivos { get; set; } = true;
+        public bool? SoloStockBajo { get; set; }
+        public decimal? PrecioDesde { get; set; }
+        public decimal? PrecioHasta { get; set; }
     }
 }

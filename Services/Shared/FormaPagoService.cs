@@ -1,4 +1,3 @@
-// Services/Shared/FormaPagoService.cs
 using Microsoft.EntityFrameworkCore;
 using theburycode.Models;
 
@@ -31,11 +30,7 @@ namespace theburycode.Services.Shared
         public async Task<bool> RequiereDatosBancarios(int formaPagoId)
         {
             var formaPago = await _context.FormaPagos.FindAsync(formaPagoId);
-            if (formaPago == null) return false;
-            
-            // Lógica según el tipo de forma de pago
-            return formaPago.Descripcion.ToUpper().Contains("TARJETA") || 
-                   formaPago.Descripcion.ToUpper().Contains("TRANSFERENCIA");
+            return formaPago?.Descripcion.ToLower().Contains("tarjeta") ?? false;
         }
 
         public async Task<FormaPagoDto?> GetDatosFormaPago(int formaPagoId)
@@ -43,16 +38,17 @@ namespace theburycode.Services.Shared
             var formaPago = await _context.FormaPagos.FindAsync(formaPagoId);
             if (formaPago == null) return null;
 
-            var descripcion = formaPago.Descripcion.ToUpper();
+            var requiereBanco = formaPago.Descripcion.ToLower().Contains("tarjeta") ||
+                               formaPago.Descripcion.ToLower().Contains("transferencia");
 
             return new FormaPagoDto
             {
                 Id = formaPago.Id,
                 Descripcion = formaPago.Descripcion,
-                RequiereBanco = descripcion.Contains("TARJETA") || descripcion.Contains("TRANSFERENCIA"),
-                RequiereTarjeta = descripcion.Contains("TARJETA"),
-                PermiteCuotas = descripcion.Contains("TARJETA") || descripcion.Contains("CREDITO"),
-                MaximoCuotas = descripcion.Contains("TARJETA") ? 12 : 1
+                RequiereBanco = requiereBanco,
+                RequiereTarjeta = formaPago.Descripcion.ToLower().Contains("tarjeta"),
+                PermiteCuotas = formaPago.Descripcion.ToLower().Contains("crédito"),
+                MaximoCuotas = 12
             };
         }
     }

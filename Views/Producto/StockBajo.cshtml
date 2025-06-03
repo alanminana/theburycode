@@ -1,0 +1,72 @@
+﻿@model IEnumerable<theburycode.ViewModels.ProductoViewModel>
+@{
+    ViewData["Title"] = "Productos con Stock Bajo";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-exclamation-triangle"></i> Productos con Stock Bajo
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-info-circle"></i>
+                        Los siguientes productos tienen stock por debajo del mínimo establecido
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Producto</th>
+                                    <th>Categoría</th>
+                                    <th>Marca</th>
+                                    <th class="text-center">Stock Actual</th>
+                                    <th class="text-center">Stock Mínimo</th>
+                                    <th class="text-center">Diferencia</th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    var diferencia = (item.StockActual ?? 0) - (item.StockMinimo ?? 0);
+                                    <tr>
+                                        <td>@item.CodigoAlfaNum</td>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.CategoriaNombre</td>
+                                        <td>@item.MarcaNombre</td>
+                                        <td class="text-center">
+                                            <span class="badge bg-danger">@item.StockActual</span>
+                                        </td>
+                                        <td class="text-center">@item.StockMinimo</td>
+                                        <td class="text-center">
+                                            <span class="text-danger">@diferencia</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-action="Edit" asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-primary" title="Actualizar stock">
+                                                <i class="fas fa-edit"></i> Actualizar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-3">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Volver
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

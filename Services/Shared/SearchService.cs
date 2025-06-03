@@ -8,10 +8,10 @@ namespace theburycode.Services.Shared
     public class ClienteSearchDto
     {
         public int Id { get; set; }
-        public string Dni { get; set; }
-        public string NombreCompleto { get; set; }
-        public string Email { get; set; }
-        public string Celular { get; set; }
+        public string Dni { get; set; } = string.Empty;
+        public string NombreCompleto { get; set; } = string.Empty;
+        public string? Email { get; set; }
+        public string? Celular { get; set; }
         public int? Scoring { get; set; }
         public decimal? LimiteCredito { get; set; }
         public bool TieneDeuda { get; set; }
@@ -20,23 +20,22 @@ namespace theburycode.Services.Shared
     public class ProductoSearchDto
     {
         public int Id { get; set; }
-        public string Codigo { get; set; }
-        public string Nombre { get; set; }
+        public string Codigo { get; set; } = string.Empty;
+        public string Nombre { get; set; } = string.Empty;
         public decimal Stock { get; set; }
         public decimal PrecioVenta { get; set; }
-        public string Categoria { get; set; }
-        public string Marca { get; set; }
-        public string ImagenUrl { get; set; }
+        public string? Categoria { get; set; }
+        public string? Marca { get; set; }
+        public string? ImagenUrl { get; set; }
     }
 
     public class ProveedorSearchDto
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Contacto { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public string? Contacto { get; set; }
         public int CantidadProductos { get; set; }
     }
-
     public class SearchService : ISearchService
     {
         private readonly TheBuryCodeContext _context;
@@ -54,9 +53,10 @@ namespace theburycode.Services.Shared
 
             var clientes = await _context.Clientes
                 .Where(c => c.Dni.Contains(termino) ||
-                           c.Nombre.ToLower().Contains(termino) ||
-                           c.Apellido.ToLower().Contains(termino) ||
-                           c.Email.ToLower().Contains(termino))
+           c.Nombre.ToLower().Contains(termino) ||
+           c.Apellido.ToLower().Contains(termino) ||
+           (c.Email != null && c.Email.ToLower().Contains(termino))).OrderBy(c => c.Apellido).ThenBy(c => c.Nombre)  // AGREGAR ESTA LÍNEA
+
                 .Select(c => new ClienteSearchDto
                 {
                     Id = c.Id,
@@ -85,7 +85,7 @@ namespace theburycode.Services.Shared
                 .Where(p => p.Activo == true &&
                            (p.CodigoAlfaNum.ToLower().Contains(termino) ||
                             p.Nombre.ToLower().Contains(termino) ||
-                            p.Marca.Nombre.ToLower().Contains(termino)))
+                            p.Marca.Nombre.ToLower().Contains(termino))).OrderBy(p => p.Nombre)
                 .Take(20)
                 .ToListAsync();
 
@@ -100,15 +100,16 @@ namespace theburycode.Services.Shared
                     Nombre = p.Nombre,
                     Stock = p.StockActual ?? 0,
                     PrecioVenta = precios?.PrecioContado ?? 0,
-                    Categoria = p.Categoria?.Nombre,
-                    Marca = p.Marca?.Nombre
+                    Categoria = p.Categoria?.Nombre ?? string.Empty,
+                    Marca = p.Marca?.Nombre ?? string.Empty
                 });
             }
 
             return result;
         }
 
-        public async Task<ProductoSearchDto> GetProductoPorCodigo(string codigo)
+        public async Task<ProductoSearchDto?> GetProductoPorCodigo(string codigo)
+
         {
             var producto = await _context.Productos
                 .Include(p => p.Categoria)
@@ -126,8 +127,8 @@ namespace theburycode.Services.Shared
                 Nombre = producto.Nombre,
                 Stock = producto.StockActual ?? 0,
                 PrecioVenta = precios?.PrecioContado ?? 0,
-                Categoria = producto.Categoria?.Nombre,
-                Marca = producto.Marca?.Nombre
+                Categoria = producto.Categoria?.Nombre ?? string.Empty,
+                Marca = producto.Marca?.Nombre ?? string.Empty
             };
         }
 
@@ -136,14 +137,14 @@ namespace theburycode.Services.Shared
             termino = termino?.ToLower() ?? "";
 
             return await _context.Proveedors
-                .Where(p => p.Activo == true &&
-                           (p.Nombre.ToLower().Contains(termino) ||
-                            p.Contacto.ToLower().Contains(termino)))
+               .Where(p => p.Activo == true &&
+           (p.Nombre.ToLower().Contains(termino) ||
+            (p.Contacto != null && p.Contacto.ToLower().Contains(termino))))
                 .Select(p => new ProveedorSearchDto
                 {
                     Id = p.Id,
                     Nombre = p.Nombre,
-                    Contacto = p.Contacto,
+                    Contacto = p.Contacto ?? string.Empty,
                     CantidadProductos = p.ProveedorProductos.Count()
                 })
                 .Take(10)

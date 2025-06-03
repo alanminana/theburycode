@@ -4,19 +4,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TheBuryCode ERP</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- CSS de la aplicación -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/theburycode.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
+
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512‐…"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TheBuryCode ERP</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -25,33 +43,42 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown">
                                 Maestros
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" asp-controller="Cliente" asp-action="Index">Clientes</a></li>
                                 <li><a class="dropdown-item" asp-controller="Producto" asp-action="Index">Productos</a></li>
                                 <li><a class="dropdown-item" asp-controller="Proveedor" asp-action="Index">Proveedores</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" asp-controller="Categoria" asp-action="Index">Categorías</a></li>
                                 <li><a class="dropdown-item" asp-controller="Marca" asp-action="Index">Marcas</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown">
                                 Operaciones
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" asp-controller="Venta" asp-action="Index">Ventas</a></li>
                                 <li><a class="dropdown-item" asp-controller="Compra" asp-action="Index">Compras</a></li>
                                 <li><a class="dropdown-item" asp-controller="Cotizacion" asp-action="Index">Cotizaciones</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" asp-controller="Credito" asp-action="Index">Créditos</a></li>
                                 <li><a class="dropdown-item" asp-controller="Devolucion" asp-action="Index">Devoluciones</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown">
                                 Reportes
                             </a>
                             <ul class="dropdown-menu">
@@ -75,6 +102,7 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -83,17 +111,36 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - TheBuryCode ERP - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+            &copy; 2024 - TheBuryCode ERP -
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+
+    <!-- ============================= -->
+    <!-- 1) Vue (UMD) debe cargarse siempre antes de usar createApp() en vistas -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.5.16/dist/vue.global.js"></script>
+
+    <!-- 2) Axios (si lo usas en tus componentes) -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- 3) jQuery (para Bootstrap u otros scripts) -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <!-- 4) Bootstrap JS Bundle (Popper + Bootstrap) -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+
+    <!-- 5) SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <!-- 6) Test Suite (si lo necesitas globalmente para todas las vistas) -->
     <script src="~/js/test/test-suite.js" asp-append-version="true"></script>
 
+    <!-- 7) site.js de tu aplicación -->
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- 8) Aquí se inyectan los scripts específicos de cada vista (por ejemplo, VueTest.cshtml) -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -122,7 +122,7 @@ public partial class TheBuryCodeContext : DbContext
     public virtual DbSet<VwProductosPreciosCalculado> VwProductosPreciosCalculados { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=localhost;Datab      ase=theburycode;User Id=sa;Password=Kirishima1!;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=localhost;DataBase=theburycode;User Id=sa;Password=Kirishima1!;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

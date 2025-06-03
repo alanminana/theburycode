@@ -20,27 +20,26 @@ namespace theburycode.Services.Shared
             var formato = $"{prefijo}-{fecha:yyyyMMdd}-";
 
             // Buscar el último número según el prefijo
-            string ultimoNumero = null;
-
+            string? ultimoNumero = null;
             switch (prefijo)
             {
                 case "FAC":
                     ultimoNumero = await _context.Venta
-                        .Where(v => v.NumeroFactura.StartsWith(formato))
+                        .Where(v => v.NumeroFactura != null && v.NumeroFactura.StartsWith(formato))
                         .OrderByDescending(v => v.NumeroFactura)
                         .Select(v => v.NumeroFactura)
                         .FirstOrDefaultAsync();
                     break;
                 case "COT":
                     ultimoNumero = await _context.Cotizacions
-                        .Where(c => c.NumeroCotizacion.StartsWith(formato))
+                        .Where(c => c.NumeroCotizacion != null && c.NumeroCotizacion.StartsWith(formato))
                         .OrderByDescending(c => c.NumeroCotizacion)
                         .Select(c => c.NumeroCotizacion)
                         .FirstOrDefaultAsync();
                     break;
                 case "OC":
                     ultimoNumero = await _context.Compras
-                        .Where(c => c.NumeroFactura.StartsWith(formato))
+                        .Where(c => c.NumeroFactura != null && c.NumeroFactura.StartsWith(formato))
                         .OrderByDescending(c => c.NumeroFactura)
                         .Select(c => c.NumeroFactura)
                         .FirstOrDefaultAsync();

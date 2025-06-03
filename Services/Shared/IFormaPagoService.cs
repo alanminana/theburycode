@@ -9,7 +9,8 @@ namespace theburycode.Services.Shared
         Task<List<Banco>> GetBancosActivos();
         Task<List<TipoTarjetum>> GetTiposTarjeta(); // Cambiar TipoTarjeta por TipoTarjetum
         Task<bool> RequiereDatosBancarios(int formaPagoId);
-        Task<FormaPagoDto> GetDatosFormaPago(int formaPagoId);
+        Task<FormaPagoDto?> GetDatosFormaPago(int formaPagoId);
+
     }
 
     public class FormaPagoDto

@@ -40,50 +40,57 @@ namespace theburycode.Controllers
 
         // Test completo de todas las tablas
         [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> TestAllTables()
         {
             var results = new Dictionary<string, object>();
             var errors = new List<string>();
+            var allTables = new List<string>();
+            var missingTables = new List<string>();
 
             try
             {
-                // Test tablas de dominio
-                results["Generos"] = await _context.Generos.CountAsync();
-                results["EstadosCiviles"] = await _context.EstadoCivils.CountAsync();
-                results["EstadosEntrega"] = await _context.EstadoEntregas.CountAsync();
-                results["EstadosCompra"] = await _context.EstadoCompras.CountAsync();
-                results["EstadosProducto"] = await _context.EstadoProductos.CountAsync();
-                results["EstadosUsuario"] = await _context.EstadoUsuarios.CountAsync();
-                results["EstadosCredito"] = await _context.EstadoSolicitudCreditos.CountAsync();
-                results["EstadosRMA"] = await _context.EstadoRmas.CountAsync();
+                // Lista de todas las tablas esperadas
+                var expectedTables = new[]
+                {
+            "Genero", "EstadoCivil", "EstadoEntrega", "EstadoCompra", "EstadoProducto",
+            "EstadoUsuario", "EstadoSolicitudCredito", "EstadoRMA", "Provincia", "Ciudad",
+            "Banco", "FormaPago", "TipoTarjeta", "SysModulo", "Cliente", "Producto",
+            "Categoria", "Marca", "Proveedor", "Venta", "Compra", "Cotizacion",
+            "SolicitudCredito", "Usuario", "Rol", "Permiso", "Conyuge", "Garante",
+            "DocumentoCliente", "DomicilioParticular", "DomicilioLaboral", "VentaDetalle",
+            "CompraDetalle", "CotizacionDetalle", "StockLog", "PrecioLog", "ScoringLog",
+            "Configuracion", "Alerta", "AlertaLog", "ArchivoCredito", "LineaCredito",
+            "Cuota", "ProveedorProducto", "UsuarioRol", "RolPermiso", "RMACliente",
+            "RMAClienteDetalle", "RMAProveedor"
+        };
 
-                // Test tablas maestras
-                results["Provincias"] = await _context.Provincia.CountAsync();
-                results["Ciudades"] = await _context.Ciudads.CountAsync();
-                results["Bancos"] = await _context.Bancos.CountAsync();
-                results["FormasPago"] = await _context.FormaPagos.CountAsync();
-                results["TiposTarjeta"] = await _context.TipoTarjeta.CountAsync();
-                results["Modulos"] = await _context.SysModulos.CountAsync();
-
-                // Test módulos principales
-                results["Clientes"] = await _context.Clientes.CountAsync();
-                results["Productos"] = await _context.Productos.CountAsync();
-                results["Categorias"] = await _context.Categoria.CountAsync();
-                results["Marcas"] = await _context.Marcas.CountAsync();
-                results["Proveedores"] = await _context.Proveedors.CountAsync();
-                results["Ventas"] = await _context.Venta.CountAsync();
-                results["Compras"] = await _context.Compras.CountAsync();
-                results["Cotizaciones"] = await _context.Cotizacions.CountAsync();
-                results["SolicitudesCredito"] = await _context.SolicitudCreditos.CountAsync();
-                results["Usuarios"] = await _context.Usuarios.CountAsync();
-                results["Roles"] = await _context.Rols.CountAsync();
+                // Verificar cada tabla
+                foreach (var tabla in expectedTables)
+                {
+                    try
+                    {
+                        var count = await _context.Database.ExecuteSqlAsync($"SELECT COUNT(*) FROM {tabla}");
+                        allTables.Add(tabla);
+                        results[tabla] = count;
+                    }
+                    catch
+                    {
+                        missingTables.Add(tabla);
+                        results[tabla] = -1;
+                    }
+                }
 
                 return Json(new
                 {
                     success = true,
-                    totalTables = results.Count,
+                    totalTables = allTables.Count,
+                    allTables = allTables,
+                    missingTables = missingTables,
                     results = results,
-                    message = "Todas las tablas verificadas correctamente"
+                    message = missingTables.Count == 0
+                        ? "Todas las tablas verificadas correctamente"
+                        : $"Faltan {missingTables.Count} tablas"
                 });
             }
             catch (Exception ex)
@@ -94,6 +101,8 @@ namespace theburycode.Controllers
                     success = false,
                     error = ex.Message,
                     innerError = ex.InnerException?.Message,
+                    allTables = allTables,
+                    missingTables = missingTables,
                     results = results
                 });
             }

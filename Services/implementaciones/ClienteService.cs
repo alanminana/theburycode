@@ -25,7 +25,7 @@ namespace theburycode.Services
                 .ToListAsync();
         }
 
-        public async Task<Cliente> GetByIdAsync(int id)
+        public async Task<Cliente?> GetByIdAsync(int id)
         {
             return await _context.Clientes
                 .Include(c => c.Ciudad)
@@ -37,7 +37,7 @@ namespace theburycode.Services
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<Cliente> GetByDniAsync(string dni)
+        public async Task<Cliente?> GetByDniAsync(string dni)
         {
             return await _context.Clientes
                 .Include(c => c.Ciudad)

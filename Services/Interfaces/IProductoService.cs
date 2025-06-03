@@ -7,7 +7,8 @@ namespace theburycode.Services
     public interface IProductoService
     {
         Task<List<Producto>> GetAllAsync();
-        Task<Producto> GetByIdAsync(int id);
+        Task<Producto?> GetByIdAsync(int id);
+
         Task<List<Producto>> GetByCategoriaAsync(int categoriaId);
         Task<List<Producto>> GetByMarcaAsync(int marcaId);
         Task<List<Producto>> GetStockBajoAsync();

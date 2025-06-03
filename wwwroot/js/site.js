@@ -1,5 +1,4 @@
 ﻿// Configuración global para Vue.js
-Vue.config.productionTip = false;
 
 // Configuración global para axios
 if (typeof axios !== 'undefined') {

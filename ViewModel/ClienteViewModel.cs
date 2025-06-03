@@ -10,21 +10,21 @@ namespace theburycode.ViewModels
         [Required(ErrorMessage = "El nombre es requerido")]
         [StringLength(50, ErrorMessage = "El nombre no puede exceder 50 caracteres")]
         [Display(Name = "Nombre")]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El apellido es requerido")]
         [StringLength(50, ErrorMessage = "El apellido no puede exceder 50 caracteres")]
         [Display(Name = "Apellido")]
-        public string Apellido { get; set; }
+        public string Apellido { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El DNI es requerido")]
         [StringLength(20, ErrorMessage = "El DNI no puede exceder 20 caracteres")]
         [Display(Name = "DNI")]
-        public string Dni { get; set; }
+        public string Dni { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El género es requerido")]
         [Display(Name = "Género")]
-        public string Genero { get; set; }
+        public string Genero { get; set; } = string.Empty;
 
         [Display(Name = "Estado Civil")]
         public string? EstadoCivil { get; set; }

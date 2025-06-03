@@ -11,6 +11,6 @@ namespace theburycode.Services.Shared
         decimal CalcularPrecioContado(decimal precioLista, decimal descuentoPct);
         decimal CalcularPrecioFinal(decimal precioBase, decimal ivaPct);
         decimal CalcularDescuento(decimal precioOriginal, decimal precioConDescuento);
-        Task<PrecioProductoDto> GetPreciosProducto(int productoId);
+        Task<PrecioProductoDto?> GetPreciosProducto(int productoId);
         Task<decimal> AplicarAjusteMasivo(List<int> productosIds, decimal porcentajeAjuste, string tipoAjuste, string usuario);
     }    }

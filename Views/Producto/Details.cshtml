@@ -1,0 +1,225 @@
+﻿@model theburycode.ViewModels.ProductoViewModel
+@{
+    ViewData["Title"] = "Detalles del Producto";
+    var historialPrecios = ViewData["HistorialPrecios"] as List<PrecioLog>;
+    var historialStock = ViewData["HistorialStock"] as List<StockLog>;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-box"></i> Detalles del Producto
+                    </h3>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a asp-action="Index" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-list"></i> Volver
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                            {
+                                <img src="@Model.ImagenUrl" alt="@Model.Nombre" class="img-fluid img-thumbnail" />
+                            }
+                            else
+                            {
+                                <div class="text-center p-5 bg-light">
+                                    <i class="fas fa-image fa-3x text-muted"></i>
+                                    <p class="text-muted mt-2">Sin imagen</p>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-8">
+                            <h4>@Model.Nombre</h4>
+                            <p class="text-muted">Código: <strong>@Model.CodigoAlfaNum</strong> (ID: @Model.Id)</p>
+
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <th width="150">Categoría:</th>
+                                        <td>@Model.CategoriaNombre</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Marca:</th>
+                                        <td>@Model.MarcaNombre @(Model.SubmarcaNombre != null ? $"- {Model.SubmarcaNombre}" : "")</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estado:</th>
+                                        <td>
+                                            @if (Model.Activo)
+                                            {
+                                                <span class="badge bg-success">Activo</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary">Inactivo</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Stock:</th>
+                                        <td>
+                                            @if (Model.StockActual < Model.StockMinimo)
+                                            {
+                                                <span class="badge bg-danger">@Model.StockActual</span>
+                                                <small class="text-danger">(Mínimo: @Model.StockMinimo)</small>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-success">@Model.StockActual</span>
+                                                <small class="text-muted">(Mínimo: @Model.StockMinimo)</small>
+                                            }
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(Model.Descripcion))
+                            {
+                                <h6>Descripción:</h6>
+                                <p>@Model.Descripcion</p>
+                            }
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5><i class="fas fa-dollar-sign"></i> Información de Precios</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Precio Costo</th>
+                                            <th>Margen %</th>
+                                            <th>Precio Lista</th>
+                                            <th>Descuento %</th>
+                                            <th>Precio Contado</th>
+                                            <th>IVA %</th>
+                                            <th>Precio Final</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>$@Model.PrecioCosto?.ToString("N2")</td>
+                                            <td>@Model.MargenVentaPct%</td>
+                                            <td>$@Model.PrecioLista.ToString("N2")</td>
+                                            <td>@Model.DescuentoContadoPct%</td>
+                                            <td class="table-success"><strong>$@Model.PrecioContado.ToString("N2")</strong></td>
+                                            <td>@Model.IvaPct%</td>
+                                            <td><strong>$@Model.PrecioFinal.ToString("N2")</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <!-- Historial de Precios -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-history"></i> Historial de Precios
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (historialPrecios?.Any() == true)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-sm mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Anterior</th>
+                                        <th>Nuevo</th>
+                                        <th>Usuario</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var log in historialPrecios.Take(5))
+                                    {
+                                        <tr>
+                                            <td>@log.FechaCambio.ToString("dd/MM/yyyy")</td>
+                                            <td>$@log.PrecioAnterior?.ToString("N2")</td>
+                                            <td>$@log.PrecioNuevo?.ToString("N2")</td>
+                                            <td>@log.Usuario</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center p-3 mb-0">Sin cambios de precio</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Movimientos de Stock -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-boxes"></i> Movimientos de Stock
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (historialStock?.Any() == true)
+                    {
+                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                            <table class="table table-sm mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Tipo</th>
+                                        <th>Anterior</th>
+                                        <th>Nuevo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var log in historialStock)
+                                    {
+                                        <tr>
+                                            <td>@log.FechaMovimiento.ToString("dd/MM HH:mm")</td>
+                                            <td>
+                                                <small>@log.TipoMovimiento</small>
+                                            </td>
+                                            <td>@log.CantidadAnterior</td>
+                                            <td>
+                                                @if (log.CantidadNueva > log.CantidadAnterior)
+                                                {
+                                                    <span class="text-success">@log.CantidadNueva</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-danger">@log.CantidadNueva</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center p-3 mb-0">Sin movimientos de stock</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

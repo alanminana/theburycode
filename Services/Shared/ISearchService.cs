@@ -4,7 +4,7 @@ namespace theburycode.Services.Shared
     {
         Task<List<ClienteSearchDto>> BuscarClientes(string termino);
         Task<List<ProductoSearchDto>> BuscarProductos(string termino);
-        Task<ProductoSearchDto> GetProductoPorCodigo(string codigo);
+        Task<ProductoSearchDto?> GetProductoPorCodigo(string codigo);
         Task<List<ProveedorSearchDto>> BuscarProveedores(string termino);
     }    
 }
