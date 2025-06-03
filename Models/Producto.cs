@@ -15,6 +15,7 @@ public partial class Producto
 {
     [Key]
     public int Id { get; set; }
+    public string? ImagenUrl { get; set; }
 
     public int CodigoNum { get; set; }
 
@@ -53,7 +54,7 @@ public partial class Producto
     public string? OrigenStock { get; set; }
 
     [Unicode(false)]
-    public string? Descripcion { get; set; }
+    public string Descripcion { get; set; } = null!;
 
     public bool Activo { get; set; }
 

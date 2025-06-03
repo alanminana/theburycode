@@ -1,6 +1,5 @@
-
-// ViewModels/ProductoViewModel.cs
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace theburycode.ViewModels
 {
@@ -70,21 +69,27 @@ namespace theburycode.ViewModels
 
         [Display(Name = "Estado")]
         public string EstadoProducto { get; set; } = "A";
-     
 
         [Display(Name = "Imagen")]
         public IFormFile? ImagenFile { get; set; }
 
-        public string? ImagenUrl { get; set; }
-        // Propiedades calculadas
-        public decimal PrecioLista => (PrecioCosto ?? 0) * (1 + (MargenVentaPct ?? 0) / 100);
-        public decimal PrecioContado => PrecioLista * (1 - (DescuentoContadoPct ?? 0) / 100);
-        public decimal PrecioFinal => PrecioContado * (1 + (IvaPct ?? 21) / 100);
+        // Ahora sí son propiedades con get/set para asignarles valores desde el controlador:
+        [Display(Name = "Precio Lista")]
+        public decimal PrecioLista { get; set; }
 
+        [Display(Name = "Precio Contado")]
+        public decimal PrecioContado { get; set; }
+
+        [Display(Name = "Precio Final")]
+        public decimal PrecioFinal { get; set; }
+
+        // Campos auxiliares para mostrar en la vista
         public string? CategoriaNombre { get; set; }
         public string? MarcaNombre { get; set; }
         public string? SubmarcaNombre { get; set; }
         public string NombreCompleto => $"{CodigoAlfaNum} - {Nombre}";
+      public string? ImagenUrl { get; set; }
+
     }
 
     public class ProductoFiltroViewModel
@@ -92,7 +97,7 @@ namespace theburycode.ViewModels
         public string? Busqueda { get; set; }
         public int? CategoriaId { get; set; }
         public int? MarcaId { get; set; }
-        public bool? SoloActivos { get; set; } = true;
+        public bool? SoloActivos { get; set; }
         public bool? SoloStockBajo { get; set; }
         public decimal? PrecioDesde { get; set; }
         public decimal? PrecioHasta { get; set; }
