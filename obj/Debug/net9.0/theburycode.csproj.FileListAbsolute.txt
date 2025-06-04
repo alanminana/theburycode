@@ -338,10 +338,10 @@ D:\github\theburycode\obj\Debug\net9.0\theburycode.genruntimeconfig.cache
 D:\github\theburycode\obj\Debug\net9.0\ref\theburycode.dll
 D:\github\theburycode\obj\Debug\net9.0\compressed\x1mmk5y3te-wramciurk0.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\o3c8xa2df6-7q4pgnx07i.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\fndx1x0n0o-ug9sqkhnr7.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\94gwml8788-2patgfcs1t.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\k0k6hfycid-vhvyv1ro1z.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\vau1yi9rxh-5pf2akdzkt.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\1muhp1l5y3-s7qtb5feo8.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\cg04hbuvy1-8o5xfh594j.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\dvg6d5cyi8-jpontdku8v.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\fndx1x0n0o-fej2kjzrmn.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\94gwml8788-fhk7tb98ff.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\k0k6hfycid-r3id6yi2yp.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\vau1yi9rxh-49xbrmlgny.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\1muhp1l5y3-q633camcmc.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\cg04hbuvy1-xsyb4oujua.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\dvg6d5cyi8-i82if0nz0q.gz

@@ -1,5 +1,4 @@
 ﻿function initProductoIndex() {
-    // Check all
     $('#checkAll').on('change', function () {
         $('.checkProducto').prop('checked', $(this).prop('checked'));
     });

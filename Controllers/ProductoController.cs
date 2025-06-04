@@ -350,13 +350,21 @@ namespace theburycode.Controllers
 
         private void LoadViewData()
         {
-            // Cargar solo subrubros (categorías tipo 'S')
-            ViewData["Categorias"] = new SelectList(
-                _context.Categoria.Where(c => c.Tipo == "S").OrderBy(c => c.Nombre),
-                "Id",
-                "Nombre");
+            // Mostrar categorías con jerarquía
+            var categorias = _context.Categoria
+                .Where(c => c.Tipo == "S")
+                .Include(c => c.Parent)
+                .OrderBy(c => c.Parent.Nombre)
+                .ThenBy(c => c.Nombre)
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Parent != null ? $"{c.Parent.Nombre} > {c.Nombre}" : c.Nombre
+                })
+                .ToList();
 
-            // Cargar solo marcas principales
+            ViewData["Categorias"] = new SelectList(categorias, "Value", "Text");
+
             ViewData["Marcas"] = new SelectList(
                 _context.Marcas.Where(m => m.ParentId == null).OrderBy(m => m.Nombre),
                 "Id",

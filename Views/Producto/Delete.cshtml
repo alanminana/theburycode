@@ -1,0 +1,62 @@
+﻿@model theburycode.ViewModels.ProductoViewModel
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-trash"></i> Eliminar Producto
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        ¿Está seguro que desea eliminar este producto?
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-3">Código:</dt>
+                        <dd class="col-sm-9">@Model.CodigoAlfaNum</dd>
+
+                        <dt class="col-sm-3">Nombre:</dt>
+                        <dd class="col-sm-9">@Model.Nombre</dd>
+
+                        <dt class="col-sm-3">Categoría:</dt>
+                        <dd class="col-sm-9">@Model.CategoriaNombre</dd>
+
+                        <dt class="col-sm-3">Marca:</dt>
+                        <dd class="col-sm-9">@Model.MarcaNombre</dd>
+
+                        <dt class="col-sm-3">Stock Actual:</dt>
+                        <dd class="col-sm-9">@Model.StockActual</dd>
+
+                        <dt class="col-sm-3">Precio Costo:</dt>
+                        <dd class="col-sm-9">$@Model.PrecioCosto?.ToString("N2")</dd>
+                    </dl>
+
+                    @if (ViewBag.TieneMovimientos == true)
+                    {
+                        <div class="alert alert-warning">
+                            <i class="fas fa-info-circle"></i>
+                            Este producto tiene movimientos asociados. Se marcará como inactivo en lugar de eliminarse.
+                        </div>
+                    }
+
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Confirmar Eliminación
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancelar
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
