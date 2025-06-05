@@ -45,7 +45,7 @@ namespace theburycode.Controllers
                 query = query.Where(p =>
                     p.CodigoAlfaNum.Contains(filtro.Busqueda) ||
                     p.Nombre.Contains(filtro.Busqueda) ||
-                    p.Descripcion.Contains(filtro.Busqueda));
+                    (p.Descripcion != null && p.Descripcion.Contains(filtro.Busqueda)));
             }
 
             if (filtro.CategoriaId.HasValue)
@@ -129,6 +129,18 @@ namespace theburycode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductoViewModel viewModel)
         {
+            _logger.LogInformation($"Create POST: {viewModel.Nombre}, Categoria: {viewModel.CategoriaId}");
+
+            // Generar código alfanumérico antes de validar
+            if (string.IsNullOrEmpty(viewModel.CodigoAlfaNum))
+            {
+                viewModel.CodigoAlfaNum = await GenerarCodigoAlfanumerico(viewModel);
+                _logger.LogInformation($"Código alfanumérico generado: {viewModel.CodigoAlfaNum}");
+            }
+
+            // Remover errores de campos autogenerados
+            ModelState.Remove("CodigoAlfaNum");
+
             if (ModelState.IsValid)
             {
                 try
@@ -136,15 +148,18 @@ namespace theburycode.Controllers
                     // Verificar código único
                     if (await _context.Productos.AnyAsync(p => p.CodigoNum == viewModel.CodigoNum))
                     {
+                        _logger.LogWarning($"Código numérico duplicado: {viewModel.CodigoNum}");
                         ModelState.AddModelError("CodigoNum", "El código ya existe");
                         LoadViewData();
                         return View(viewModel);
                     }
 
                     var producto = MapToEntity(viewModel);
-                    producto.CodigoAlfaNum = GenerarCodigoAlfanumerico(viewModel);
                     producto.UsuarioAlta = User.Identity?.Name ?? "SYSTEM";
                     producto.EstadoProducto = "A";
+                    producto.FechaAlta = DateTime.Now;
+
+                    _logger.LogInformation($"Guardando producto: Código={producto.CodigoAlfaNum}, Nombre={producto.Nombre}");
 
                     // Subir imagen si existe
                     if (viewModel.ImagenFile != null)
@@ -153,19 +168,27 @@ namespace theburycode.Controllers
                         if (_fileUploadService.ValidateFile(viewModel.ImagenFile, allowedExtensions, 5 * 1024 * 1024))
                         {
                             var fileName = await _fileUploadService.UploadFileAsync(viewModel.ImagenFile, "productos");
-                            producto.OrigenStock = fileName; // Usamos OrigenStock temporalmente para la imagen
+                            producto.OrigenStock = fileName;
+                            _logger.LogInformation($"Imagen subida: {fileName}");
                         }
                     }
 
                     await _productoService.CreateAsync(producto);
+
+                    _logger.LogInformation($"Producto creado exitosamente con ID: {producto.Id}");
                     TempData["Success"] = "Producto creado exitosamente";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Error al crear producto");
-                    ModelState.AddModelError("", "Error al guardar el producto");
+                    _logger.LogError(ex, $"Error al crear producto: {viewModel.Nombre}");
+                    ModelState.AddModelError("", $"Error al guardar el producto: {ex.Message}");
                 }
+            }
+            else
+            {
+                var errores = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                _logger.LogWarning($"ModelState inválido. Errores: {string.Join(", ", errores)}");
             }
 
             LoadViewData();
@@ -289,11 +312,11 @@ namespace theburycode.Controllers
                 var result = await _productoService.DeleteAsync(id);
                 if (result)
                 {
-                    TempData["Success"] = "Producto desactivado exitosamente";
+                    TempData["Success"] = "Producto eliminado/desactivado exitosamente";
                 }
                 else
                 {
-                    TempData["Error"] = "No se pudo desactivar el producto";
+                    TempData["Error"] = "No se pudo eliminar el producto";
                 }
             }
             catch (Exception ex)
@@ -305,25 +328,85 @@ namespace theburycode.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // POST: Producto/RollbackPrecio
+        [HttpPost]
+        public async Task<IActionResult> RollbackPrecio(int productoId, int precioLogId)
+        {
+            _logger.LogInformation($"RollbackPrecio: ProductoId={productoId}, PrecioLogId={precioLogId}");
+
+            try
+            {
+                var precioLog = await _context.PrecioLogs.FindAsync(precioLogId);
+                if (precioLog == null)
+                {
+                    _logger.LogWarning($"PrecioLog {precioLogId} no encontrado");
+                    return Json(new { success = false, error = "Registro no encontrado" });
+                }
+
+                var producto = await _context.Productos.FindAsync(productoId);
+                if (producto == null)
+                {
+                    _logger.LogWarning($"Producto {productoId} no encontrado");
+                    return Json(new { success = false, error = "Producto no encontrado" });
+                }
+
+                // Guardar precio actual antes de revertir
+                var nuevoPrecioLog = new PrecioLog
+                {
+                    ProductoId = productoId,
+                    FechaCambio = DateTime.Now,
+                    PrecioAnterior = producto.PrecioCosto,
+                    PrecioNuevo = precioLog.PrecioAnterior,
+                    Usuario = User.Identity?.Name ?? "SYSTEM"
+                };
+
+                producto.PrecioCosto = precioLog.PrecioAnterior;
+                producto.FechaModificacion = DateTime.Now;
+                producto.UsuarioModificacion = User.Identity?.Name ?? "SYSTEM";
+
+                _context.PrecioLogs.Add(nuevoPrecioLog);
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation($"Precio revertido para producto {productoId} a ${precioLog.PrecioAnterior}");
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al revertir precio");
+                return Json(new { success = false, error = ex.Message });
+            }
+        }
+
         // POST: Producto/AjustePrecioMasivo
         [HttpPost]
         public async Task<IActionResult> AjustePrecioMasivo(int[] productosIds, decimal porcentaje, string tipoAjuste)
         {
+            _logger.LogInformation($"AjustePrecioMasivo iniciado: {productosIds?.Length ?? 0} productos, {porcentaje}% {tipoAjuste}");
+
             try
             {
+                if (productosIds == null || productosIds.Length == 0)
+                {
+                    _logger.LogWarning("No se recibieron IDs de productos");
+                    return Json(new { success = false, error = "No se recibieron productos", actualizados = 0 });
+                }
+
                 var usuario = User.Identity?.Name ?? "SYSTEM";
+                _logger.LogInformation($"IDs recibidos: {string.Join(",", productosIds)}");
+
                 var actualizados = await _precioCalculator.AplicarAjusteMasivo(
                     productosIds.ToList(),
                     porcentaje,
                     tipoAjuste,
                     usuario);
 
+                _logger.LogInformation($"Ajuste completado: {actualizados} productos actualizados");
                 return Json(new { success = true, actualizados });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error en ajuste masivo");
-                return Json(new { success = false, error = ex.Message });
+                return Json(new { success = false, error = ex.Message, actualizados = 0 });
             }
         }
 
@@ -342,6 +425,46 @@ namespace theburycode.Controllers
             return View(viewModels);
         }
 
+        // AJAX Methods
+        [HttpGet]
+        public async Task<IActionResult> GetRubros()
+        {
+            _logger.LogInformation("GetRubros llamado");
+            var rubros = await _context.Categoria
+                .Where(c => c.Tipo == "R")
+                .Select(r => new { value = r.Id, text = r.Nombre })
+                .ToListAsync();
+
+            _logger.LogInformation($"Rubros encontrados: {rubros.Count}");
+            return Json(rubros);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSubrubros(int rubroId)
+        {
+            _logger.LogInformation($"GetSubrubros llamado con rubroId: {rubroId}");
+            var subrubros = await _context.Categoria
+                .Where(c => c.ParentId == rubroId && c.Tipo == "S")
+                .Select(s => new { value = s.Id, text = s.Nombre })
+                .ToListAsync();
+
+            _logger.LogInformation($"Subrubros encontrados: {subrubros.Count}");
+            return Json(subrubros);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSubmarcas(int marcaId)
+        {
+            _logger.LogInformation($"GetSubmarcas llamado con marcaId: {marcaId}");
+            var submarcas = await _context.Marcas
+                .Where(m => m.ParentId == marcaId)
+                .Select(m => new { value = m.Id, text = m.Nombre })
+                .ToListAsync();
+
+            _logger.LogInformation($"Submarcas encontradas: {submarcas.Count}");
+            return Json(submarcas);
+        }
+
         // Métodos auxiliares
         private async Task<bool> ProductoExists(int id)
         {
@@ -350,7 +473,13 @@ namespace theburycode.Controllers
 
         private void LoadViewData()
         {
-            // Mostrar categorías con jerarquía
+            // Cargar rubros para el dropdown
+            ViewData["Rubros"] = new SelectList(
+                _context.Categoria.Where(c => c.Tipo == "R").OrderBy(c => c.Nombre),
+                "Id",
+                "Nombre");
+
+            // Mostrar categorías (subrubros) con jerarquía
             var categorias = _context.Categoria
                 .Where(c => c.Tipo == "S")
                 .Include(c => c.Parent)
@@ -378,13 +507,15 @@ namespace theburycode.Controllers
                 .Select(p => p.CodigoNum)
                 .FirstOrDefault();
 
-            return ultimo + 1;
+            var nuevo = ultimo + 1;
+            _logger.LogInformation($"Código numérico generado: {nuevo}");
+            return nuevo;
         }
 
-        private string GenerarCodigoAlfanumerico(ProductoViewModel viewModel)
+        private async Task<string> GenerarCodigoAlfanumerico(ProductoViewModel viewModel)
         {
-            var categoria = _context.Categoria.Find(viewModel.CategoriaId);
-            var marca = _context.Marcas.Find(viewModel.MarcaId);
+            var categoria = await _context.Categoria.FindAsync(viewModel.CategoriaId);
+            var marca = await _context.Marcas.FindAsync(viewModel.MarcaId);
 
             var prefijoCat = categoria?.Nombre.Substring(0, Math.Min(3, categoria.Nombre.Length)).ToUpper() ?? "GEN";
             var prefijoMarca = marca?.Nombre.Substring(0, Math.Min(2, marca.Nombre.Length)).ToUpper() ?? "XX";
@@ -435,7 +566,7 @@ namespace theburycode.Controllers
             {
                 Id = viewModel.Id,
                 CodigoNum = viewModel.CodigoNum,
-                CodigoAlfaNum = viewModel.CodigoAlfaNum,
+                CodigoAlfaNum = viewModel.CodigoAlfaNum ?? string.Empty,
                 Nombre = viewModel.Nombre,
                 Descripcion = viewModel.Descripcion,
                 CategoriaId = viewModel.CategoriaId,
@@ -449,18 +580,6 @@ namespace theburycode.Controllers
                 StockMinimo = viewModel.StockMinimo,
                 Activo = viewModel.Activo
             };
-        }
-
-        // AJAX Methods
-        [HttpGet]
-        public async Task<IActionResult> GetSubmarcas(int marcaId)
-        {
-            var submarcas = await _context.Marcas
-                .Where(m => m.ParentId == marcaId)
-                .Select(m => new { value = m.Id, text = m.Nombre })
-                .ToListAsync();
-
-            return Json(submarcas);
         }
     }
 }

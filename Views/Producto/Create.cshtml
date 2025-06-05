@@ -34,44 +34,68 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <!-- Rubro -->
+                            <div class="col-md-3">
                                 <div class="form-group mb-3">
-                                    <label asp-for="CategoriaId" class="control-label"></label>
-                                    <select asp-for="CategoriaId" class="form-select" asp-items="ViewBag.Categorias">
-                                        <option value="">-- Seleccione --</option>
-                                    </select>
-                                    <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                                    <label class="control-label">Rubro</label>
+                                    <div class="input-group">
+                                        <select id="rubroSelect" class="form-select">
+                                            <option value="">-- Seleccione --</option>
+                                            <!-- Aquí cargarás las opciones iniciales -->
+                                        </select>
+                                        <button class="btn btn-outline-primary" type="button" onclick="abrirModal('Rubro')">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+                            <!-- Subrubro -->
+                            <div class="col-md-3">
                                 <div class="form-group mb-3">
-                                    <label asp-for="MarcaId" class="control-label"></label>
-                                    <select asp-for="MarcaId" class="form-select" asp-items="ViewBag.Marcas">
-                                        <option value="">-- Seleccione --</option>
-                                    </select>
-                                    <span asp-validation-for="MarcaId" class="text-danger"></span>
+                                    <label class="control-label">Subrubro</label>
+                                    <div class="input-group">
+                                        <select id="subrubroSelect" class="form-select">
+                                            <option value="">-- Seleccione --</option>
+                                        </select>
+                                        <button class="btn btn-outline-primary" type="button" onclick="abrirModal('Subrubro')">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+                            <!-- Marca -->
+                            <div class="col-md-3">
                                 <div class="form-group mb-3">
-                                    <label asp-for="SubmarcaId" class="control-label"></label>
-                                    <select asp-for="SubmarcaId" class="form-select">
-                                        <option value="">-- Seleccione marca primero --</option>
-                                    </select>
-                                    <span asp-validation-for="SubmarcaId" class="text-danger"></span>
+                                    <label class="control-label">Marca</label>
+                                    <div class="input-group">
+                                        <select id="marcaSelect" class="form-select">
+                                            <option value="">-- Seleccione --</option>
+                                        </select>
+                                        <button class="btn btn-outline-primary" type="button" onclick="abrirModal('Marca')">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submarca -->
+                            <div class="col-md-3">
+                                <div class="form-group mb-3">
+                                    <label class="control-label">Submarca</label>
+                                    <div class="input-group">
+                                        <select id="submarcaSelect" class="form-select">
+                                            <option value="">-- Seleccione --</option>
+                                        </select>
+                                        <button class="btn btn-outline-primary" type="button" onclick="abrirModal('Submarca')">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group mb-3">
-                                    <label asp-for="Descripcion" class="control-label"></label>
-                                    <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
-                                    <span asp-validation-for="Descripcion" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
 
                         <hr />
                         <h5><i class="fas fa-dollar-sign"></i> Precios</h5>

@@ -1,0 +1,218 @@
+﻿@model theburycode.ViewModels.CategoriaIndexViewModel
+@{
+    ViewData["Title"] = "Categorías y Marcas";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Categorías -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-tags"></i> Rubros y Subrubros
+                    </h3>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCategoria">
+                        <i class="fas fa-plus"></i> Nueva
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Nombre</th>
+                                    <th>Padre</th>
+                                    <th>Sub</th>
+                                    <th>Prod</th>
+                                    <th width="80">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Categorias.Where(c => c.Tipo == "R"))
+                                {
+                                    <tr class="table-primary">
+                                        <td><span class="badge bg-primary">R</span></td>
+                                        <td><strong>@item.Nombre</strong></td>
+                                        <td>-</td>
+                                        <td>@item.InverseParent.Count</td>
+                                        <td>-</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger" onclick="eliminarCategoria(@item.Id)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @foreach (var sub in item.InverseParent)
+                                    {
+                                        <tr>
+                                            <td><span class="badge bg-secondary">S</span></td>
+                                            <td class="ps-4">@sub.Nombre</td>
+                                            <td>@item.Nombre</td>
+                                            <td>-</td>
+                                            <td>@sub.Productos.Count</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-danger" onclick="eliminarCategoria(@sub.Id)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marcas -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-trademark"></i> Marcas y Submarcas
+                    </h3>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalMarca">
+                        <i class="fas fa-plus"></i> Nueva
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Nombre</th>
+                                    <th>Padre</th>
+                                    <th>Sub</th>
+                                    <th>Prod</th>
+                                    <th width="80">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Marcas.Where(m => m.Tipo == "M"))
+                                {
+                                    <tr class="table-info">
+                                        <td><span class="badge bg-info">M</span></td>
+                                        <td><strong>@item.Nombre</strong></td>
+                                        <td>-</td>
+                                        <td>@item.InverseParent.Count</td>
+                                        <td>@item.ProductoMarcas.Count</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger" onclick="eliminarMarca(@item.Id)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @foreach (var sub in item.InverseParent)
+                                    {
+                                        <tr>
+                                            <td><span class="badge bg-secondary">S</span></td>
+                                            <td class="ps-4">@sub.Nombre</td>
+                                            <td>@item.Nombre</td>
+                                            <td>-</td>
+                                            <td>@sub.ProductoSubmarcas.Count</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-danger" onclick="eliminarMarca(@sub.Id)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Nueva Categoría -->
+<div class="modal fade" id="modalCategoria" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nueva Categoría</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formCategoria">
+                    <div class="mb-3">
+                        <label class="form-label">Tipo</label>
+                        <select id="categoriaTipo" class="form-select" onchange="onTipoChange()">
+                            <option value="R">Rubro</option>
+                            <option value="S">Subrubro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="divParent" style="display:none;">
+                        <label class="form-label">Rubro Padre</label>
+                        <select id="categoriaParent" class="form-select">
+                            <option value="">-- Seleccione --</option>
+                            @foreach (var rubro in Model.Categorias.Where(c => c.Tipo == "R"))
+                            {
+                                <option value="@rubro.Id">@rubro.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" id="categoriaNombre" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="guardarCategoria()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Nueva Marca -->
+<div class="modal fade" id="modalMarca" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nueva Marca</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formMarca">
+                    <div class="mb-3">
+                        <label class="form-label">Tipo</label>
+                        <select id="marcaTipo" class="form-select" onchange="onTipoMarcaChange()">
+                            <option value="M">Marca</option>
+                            <option value="S">Submarca</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="divMarcaParent" style="display:none;">
+                        <label class="form-label">Marca Padre</label>
+                        <select id="marcaParent" class="form-select">
+                            <option value="">-- Seleccione --</option>
+                            @foreach (var marca in Model.Marcas.Where(m => m.Tipo == "M"))
+                            {
+                                <option value="@marca.Id">@marca.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" id="marcaNombre" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="guardarMarca()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/views/categoria-index.js"></script>
+}

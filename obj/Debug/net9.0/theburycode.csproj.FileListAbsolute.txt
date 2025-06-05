@@ -342,6 +342,7 @@ D:\github\theburycode\obj\Debug\net9.0\compressed\fndx1x0n0o-fej2kjzrmn.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\94gwml8788-fhk7tb98ff.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\k0k6hfycid-r3id6yi2yp.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\vau1yi9rxh-49xbrmlgny.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\1muhp1l5y3-q633camcmc.gz
 D:\github\theburycode\obj\Debug\net9.0\compressed\cg04hbuvy1-xsyb4oujua.gz
-D:\github\theburycode\obj\Debug\net9.0\compressed\dvg6d5cyi8-i82if0nz0q.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\1muhp1l5y3-72gfngatmf.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\dvg6d5cyi8-v02mzkdenx.gz
+D:\github\theburycode\obj\Debug\net9.0\compressed\d7ne65qqfz-gv0d36mngq.gz

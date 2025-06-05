@@ -1,5 +1,3 @@
-
-// Services/Implementations/ProductoService.cs
 using Microsoft.EntityFrameworkCore;
 using theburycode.Models;
 
@@ -21,6 +19,7 @@ namespace theburycode.Services
             return await _context.Productos
                 .Include(p => p.Categoria)
                 .Include(p => p.Marca)
+                .Include(p => p.Submarca)
                 .Where(p => p.Activo == true)
                 .OrderBy(p => p.Nombre)
                 .ToListAsync();
@@ -56,6 +55,8 @@ namespace theburycode.Services
         public async Task<List<Producto>> GetStockBajoAsync()
         {
             return await _context.Productos
+                .Include(p => p.Categoria)
+                .Include(p => p.Marca)
                 .Where(p => p.StockActual < p.StockMinimo && p.Activo == true)
                 .ToListAsync();
         }
@@ -86,6 +87,24 @@ namespace theburycode.Services
                     Usuario = producto.UsuarioModificacion
                 };
                 _context.PrecioLogs.Add(precioLog);
+                _logger.LogInformation($"Precio cambiado: Producto {producto.Id}, de ${original.PrecioCosto} a ${producto.PrecioCosto}");
+            }
+
+            // Log cambio de stock si cambió
+            if (original != null && original.StockActual != producto.StockActual)
+            {
+                var stockLog = new StockLog
+                {
+                    ProductoId = producto.Id,
+                    CantidadAnterior = original.StockActual,
+                    CantidadNueva = producto.StockActual,
+                    TipoMovimiento = "AJUSTE_MANUAL",
+                    FechaMovimiento = DateTime.Now,
+                    Usuario = producto.UsuarioModificacion,
+                    Origen = "Edición manual"
+                };
+                _context.StockLogs.Add(stockLog);
+                _logger.LogInformation($"Stock cambiado: Producto {producto.Id}, de {original.StockActual} a {producto.StockActual}");
             }
 
             producto.FechaModificacion = DateTime.Now;
@@ -98,14 +117,36 @@ namespace theburycode.Services
         public async Task<bool> DeleteAsync(int id)
         {
             var producto = await _context.Productos.FindAsync(id);
-            if (producto == null) return false;
+            if (producto == null)
+            {
+                _logger.LogWarning($"Producto {id} no encontrado para eliminar");
+                return false;
+            }
 
-            // Soft delete
-            producto.Activo = false;
-            producto.FechaModificacion = DateTime.Now;
+            // Verificar si tiene movimientos
+            var tieneVentas = await _context.VentaDetalles.AnyAsync(v => v.ProductoId == id);
+            var tieneCompras = await _context.CompraDetalles.AnyAsync(c => c.ProductoId == id);
+            var tieneCotizaciones = await _context.CotizacionDetalles.AnyAsync(c => c.ProductoId == id);
+
+            if (tieneVentas || tieneCompras || tieneCotizaciones)
+            {
+                // Desactivar en lugar de eliminar físicamente
+                producto.Activo = false;
+                producto.EstadoProducto = "I";
+                producto.FechaModificacion = DateTime.Now;
+                producto.UsuarioModificacion = "SYSTEM";
+                producto.FechaSuspension = DateTime.Now;
+
+                _logger.LogInformation($"Producto {id} desactivado por tener movimientos asociados");
+            }
+            else
+            {
+                // Eliminar físicamente si no tiene movimientos
+                _context.Productos.Remove(producto);
+                _logger.LogInformation($"Producto {id} eliminado físicamente");
+            }
+
             await _context.SaveChangesAsync();
-
-            _logger.LogInformation($"Producto desactivado: {id}");
             return true;
         }
 
@@ -114,8 +155,8 @@ namespace theburycode.Services
             var producto = await _context.Productos.FindAsync(productoId);
             if (producto == null) return false;
 
-            var stockAnterior = producto.StockActual;
-            producto.StockActual += cantidad;
+            var stockAnterior = producto.StockActual ?? 0;
+            producto.StockActual = stockAnterior + cantidad;
 
             // Log de movimiento de stock
             var stockLog = new StockLog
@@ -124,11 +165,13 @@ namespace theburycode.Services
                 CantidadAnterior = stockAnterior,
                 CantidadNueva = producto.StockActual,
                 TipoMovimiento = tipoMovimiento,
-                FechaMovimiento = DateTime.Now
+                FechaMovimiento = DateTime.Now,
+                Usuario = "SYSTEM"
             };
             _context.StockLogs.Add(stockLog);
 
             await _context.SaveChangesAsync();
+            _logger.LogInformation($"Stock actualizado: Producto {productoId}, {tipoMovimiento}, cantidad: {cantidad}");
             return true;
         }
 

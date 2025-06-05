@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("theburycode")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3268ec63c9e670037e19bf959fd1990e2813305")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc4d4aaf5cca3429158d4b1e3d68ec0b3a99aec9")]
 [assembly: System.Reflection.AssemblyProductAttribute("theburycode")]
 [assembly: System.Reflection.AssemblyTitleAttribute("theburycode")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

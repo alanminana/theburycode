@@ -11,7 +11,6 @@ namespace theburycode.ViewModels
         [Display(Name = "Código")]
         public int CodigoNum { get; set; }
 
-        [Required(ErrorMessage = "El código alfanumérico es requerido")]
         [StringLength(50)]
         [Display(Name = "Código Producto")]
         public string CodigoAlfaNum { get; set; } = string.Empty;
