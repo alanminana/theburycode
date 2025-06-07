@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\github\\theburycode\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\controllers\\databasetestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:controllers\\databasetestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\wwwroot\\js\\views\\categoria-index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:wwwroot\\js\\views\\categoria-index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\viewmodel\\categoriaindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:viewmodel\\categoriaindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|solutionrelative:controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DED004D6-D06C-4A4B-8761-C4EE57EEBFC2}|theburycode.csproj|d:\\github\\theburycode\\services\\implementaciones\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -98,7 +102,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,7 +110,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "DatabaseTestController.cs",
+              "DocumentMoniker": "D:\\github\\theburycode\\Controllers\\DatabaseTestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DatabaseTestController.cs",
+              "ToolTip": "D:\\github\\theburycode\\Controllers\\DatabaseTestController.cs",
+              "RelativeToolTip": "Controllers\\DatabaseTestController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowCYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T21:13:17.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Categoria\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Categoria\\Index.cshtml",
@@ -114,12 +131,11 @@
               "RelativeToolTip": "Views\\Categoria\\Index.cshtml",
               "ViewState": "AgIAAMoAAAAAAAAAAAAcwNkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-05T20:45:09.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T20:45:09.341Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CategoriaController.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Controllers\\CategoriaController.cs",
               "RelativeDocumentMoniker": "Controllers\\CategoriaController.cs",
@@ -127,25 +143,23 @@
               "RelativeToolTip": "Controllers\\CategoriaController.cs",
               "ViewState": "AgIAAAIBAAAAAAAAAAAcwBIBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T20:44:14.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T20:44:14.273Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "categoria-index.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\categoria-index.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\categoria-index.js",
               "ToolTip": "D:\\github\\theburycode\\wwwroot\\js\\views\\categoria-index.js",
               "RelativeToolTip": "wwwroot\\js\\views\\categoria-index.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-06-05T20:43:24.29Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T20:43:24.29Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Categoria\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Categoria\\Edit.cshtml",
@@ -153,25 +167,24 @@
               "RelativeToolTip": "Views\\Categoria\\Edit.cshtml",
               "ViewState": "AgIAAKQAAAAAAAAAAAAkwMMAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-03T15:29:04.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T15:29:04.754Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ProductoController.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Controllers\\ProductoController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductoController.cs",
               "ToolTip": "D:\\github\\theburycode\\Controllers\\ProductoController.cs",
               "RelativeToolTip": "Controllers\\ProductoController.cs",
-              "ViewState": "AgIAADkCAAAAAAAAAAAcwEgCAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAADwvz4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T18:00:59.53Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -179,12 +192,11 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAF0AAAAAAAAAAAAcwGMAAAB/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-05T20:10:13.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T20:10:13.527Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Producto\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Producto\\Create.cshtml",
@@ -192,12 +204,11 @@
               "RelativeToolTip": "Views\\Producto\\Create.cshtml",
               "ViewState": "AgIAAIkAAAAAAAAAAAAAwGEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-03T15:33:33.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T15:33:33.555Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CategoriaIndexViewModel.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\ViewModel\\CategoriaIndexViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\CategoriaIndexViewModel.cs",
@@ -205,12 +216,11 @@
               "RelativeToolTip": "ViewModel\\CategoriaIndexViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T20:50:38.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T20:50:38.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Categoria\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Categoria\\Create.cshtml",
@@ -218,12 +228,11 @@
               "RelativeToolTip": "Views\\Categoria\\Create.cshtml",
               "ViewState": "AgIAALoAAAAAAAAAAAAAAM0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-03T14:02:46.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T14:02:46.258Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ProductoService.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Services\\implementaciones\\ProductoService.cs",
               "RelativeDocumentMoniker": "Services\\implementaciones\\ProductoService.cs",
@@ -231,12 +240,11 @@
               "RelativeToolTip": "Services\\implementaciones\\ProductoService.cs",
               "ViewState": "AgIAALUAAAAAAAAAAAAcwMQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T20:38:27.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T20:38:27.68Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "producto-index.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\producto-index.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\producto-index.js",
@@ -244,12 +252,11 @@
               "RelativeToolTip": "wwwroot\\js\\views\\producto-index.js",
               "ViewState": "AgIAAD0AAAAAAAAAAAAIwEsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-06-03T15:46:18.783Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T15:46:18.783Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "cliente-create.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\cliente-create.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\cliente-create.js",
@@ -261,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ProductoViewModel.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\ViewModel\\ProductoViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\ProductoViewModel.cs",
@@ -269,12 +276,11 @@
               "RelativeToolTip": "ViewModel\\ProductoViewModel.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAkwA0AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T20:26:34.93Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T20:26:34.93Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "producto-edit.js.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\producto-edit.js.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\producto-edit.js.js",
@@ -282,12 +288,11 @@
               "RelativeToolTip": "wwwroot\\js\\views\\producto-edit.js.js",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAwAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-06-03T15:46:02.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T15:46:02.493Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "cliente-edit.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\cliente-edit.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\cliente-edit.js",
@@ -299,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "producto-create.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\producto-create.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\producto-create.js",
@@ -307,12 +312,11 @@
               "RelativeToolTip": "wwwroot\\js\\views\\producto-create.js",
               "ViewState": "AgIAACoAAAAAAAAAAAAAwDIAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-06-03T15:46:03.027Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T15:46:03.027Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "producto-common.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\producto-common.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\producto-common.js",
@@ -324,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Producto.cs",
               "DocumentMoniker": "D:\\github\\theburycode\\Models\\Producto.cs",
               "RelativeDocumentMoniker": "Models\\Producto.cs",
@@ -336,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Producto\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\Producto\\Delete.cshtml",
@@ -348,7 +352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "cliente-common.js",
               "DocumentMoniker": "D:\\github\\theburycode\\wwwroot\\js\\views\\cliente-common.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\views\\cliente-common.js",
@@ -360,7 +364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Producto\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Producto\\Index.cshtml",
@@ -372,7 +376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\github\\theburycode\\Views\\Producto\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Producto\\Edit.cshtml",

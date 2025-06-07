@@ -40,7 +40,6 @@ namespace theburycode.Controllers
 
         // Test completo de todas las tablas
         [HttpGet]
-        [HttpGet]
         public async Task<IActionResult> TestAllTables()
         {
             var results = new Dictionary<string, object>();
