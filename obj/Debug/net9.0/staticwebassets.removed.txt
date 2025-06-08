@@ -1,0 +1,7 @@
+D:\github\theburycode\wwwroot\js\views\cliente-common.js
+D:\github\theburycode\wwwroot\js\views\cliente-create.js
+D:\github\theburycode\wwwroot\js\views\cliente-edit.js
+D:\github\theburycode\wwwroot\js\views\producto-common.js
+D:\github\theburycode\wwwroot\js\views\producto-create.js
+D:\github\theburycode\wwwroot\js\views\producto-edit.js.js
+D:\github\theburycode\wwwroot\js\views\producto-index.js

@@ -119,8 +119,7 @@
 
     <!-- ============================= -->
     <!-- 1) Vue (UMD) debe cargarse siempre antes de usar createApp() en vistas -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.5.16/dist/vue.global.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script> <!-- Nota: .prod.js -->
     <!-- 2) Axios (si lo usas en tus componentes) -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -129,7 +128,7 @@
 
     <!-- 4) Bootstrap JS Bundle (Popper + Bootstrap) -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="~/js/utils/common.js"></script> <!-- Agregar aquí -->
     <!-- 5) SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"
             crossorigin="anonymous"
@@ -137,7 +136,6 @@
 
     <!-- 6) Test Suite (si lo necesitas globalmente para todas las vistas) -->
     <!-- 6)   <script src="~/js/test/test-suite.js" asp-append-version="true"></script> -->
-
     <!-- 7) site.js de tu aplicación -->
     <script src="~/js/site.js" asp-append-version="true"></script>
 

@@ -1,4 +1,6 @@
-﻿const ProductoSearch = {
+﻿// wwwroot/js/components/producto-search.js
+const ProductoSearch = {
+    name: 'ProductoSearch',
     template: `
         <div class="producto-search">
             <div class="input-group">
@@ -49,7 +51,7 @@
             mostrarResultados: false,
             debounceTimer: null
         };
-    }, // Esta línea 32 debe terminar con punto y coma y coma
+    },
     methods: {
         async buscar() {
             clearTimeout(this.debounceTimer);
@@ -76,13 +78,11 @@
             this.mostrarResultados = false;
         },
         abrirModal() {
-            // Implementar modal de búsqueda avanzada
+            console.log('Modal de búsqueda avanzada no implementado');
         },
         formatPrice(price) {
-            return new Intl.NumberFormat('es-AR', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(price);
+            // Usar función global de site.js
+            return window.formatPrice(price);
         }
     },
     mounted() {
@@ -92,5 +92,11 @@
                 this.mostrarResultados = false;
             }
         });
+    },
+    beforeUnmount() {
+        clearTimeout(this.debounceTimer);
     }
 };
+
+// Exportar para uso global
+window.ProductoSearch = ProductoSearch;

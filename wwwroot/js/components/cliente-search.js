@@ -1,4 +1,6 @@
-﻿const ClienteSearch = {
+﻿// wwwroot/js/components/cliente-search.js
+const ClienteSearch = {
+    name: 'ClienteSearch',
     template: `
         <div class="cliente-search">
             <div class="input-group">
@@ -80,6 +82,7 @@
         },
         abrirModal() {
             // Implementar modal de búsqueda avanzada
+            console.log('Modal de búsqueda avanzada no implementado');
         }
     },
     mounted() {
@@ -89,5 +92,11 @@
                 this.mostrarResultados = false;
             }
         });
+    },
+    beforeUnmount() {
+        clearTimeout(this.debounceTimer);
     }
 };
+
+// Exportar para uso global
+window.ClienteSearch = ClienteSearch;

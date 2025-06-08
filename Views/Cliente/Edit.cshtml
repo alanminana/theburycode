@@ -188,18 +188,16 @@
     </div>
 </div>
 
-
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    <script src="~/js/views/cliente-common.js"></script>
-    <script src="~/js/views/cliente-edit.js"></script>
+    <script src="~/js/utils/common.js"></script>
+    <script src="~/js/views/cliente-form.js"></script>
     <script>
         $(document).ready(function() {
-            var ciudadActual ='@Model.CiudadId';
-            var dniOriginal = '@Model.Dni';
-            initClienteEdit(ciudadActual, dniOriginal);
+            ClienteForm.init({
+                modo: 'edit',
+                ciudadActual: @Model.CiudadId,
+                dniOriginal: '@Model.Dni'
+            });
         });
     </script>
 }

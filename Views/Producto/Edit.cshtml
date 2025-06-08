@@ -208,19 +208,23 @@
         </div>
     </div>
 </div>
-
 @section Scripts {
+    <script src="~/js/utils/common.js"></script>
+    <script src="~/js/views/producto-form.js"></script>
     <script>
         $(document).ready(function() {
-            var marcaActual = @Model.MarcaId;
-            var submarcaActual = @(Model.SubmarcaId ?? 0);
-            var preciosActuales = {
-                lista: @Model.PrecioLista,
-                contado: @Model.PrecioContado,
-                final: @Model.PrecioFinal
-            };
-            initProductoEdit(marcaActual, submarcaActual, preciosActuales);
+            ProductoForm.init({
+                modo: 'edit',
+                marcaActual: @Model.MarcaId,
+                submarcaActual: @(Model.SubmarcaId ?? 0),
+                categoriaActual: @Model.CategoriaId,
+                rubroActual: @ViewBag.RubroId,
+                preciosActuales: {
+                    lista: @Model.PrecioLista,
+                    contado: @Model.PrecioContado,
+                    final: @Model.PrecioFinal
+                }
+            });
         });
     </script>
-
 }

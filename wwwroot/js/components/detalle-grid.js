@@ -1,4 +1,6 @@
-﻿const DetalleGrid = {
+﻿// wwwroot/js/components/detalle-grid.js
+const DetalleGrid = {
+    name: 'DetalleGrid',
     template: `
     <div class="detalle-grid">
       <table class="table table-striped">
@@ -113,7 +115,10 @@
         agregarProducto(producto) {
             const existente = this.items.find(i => i.productoId === producto.id);
             if (existente) {
-                if (this.validarStock && existente.cantidad >= existente.stock) return;
+                if (this.validarStock && existente.cantidad >= existente.stock) {
+                    Swal.fire('Error', 'Stock insuficiente', 'warning');
+                    return;
+                }
                 existente.cantidad++;
                 this.calcularSubtotal(this.items.indexOf(existente));
                 return;
@@ -135,7 +140,10 @@
         calcularSubtotal(index) {
             const item = this.items[index];
             if (item.cantidad < 1) item.cantidad = 1;
-            if (this.validarStock && item.cantidad > item.stock) item.cantidad = item.stock;
+            if (this.validarStock && item.cantidad > item.stock) {
+                item.cantidad = item.stock;
+                Swal.fire('Atención', 'Cantidad ajustada al stock disponible', 'info');
+            }
             item.subtotal = item.cantidad * item.precioUnit;
             this.emitirCambios();
         },
@@ -151,10 +159,8 @@
         },
 
         formatPrice(value) {
-            return new Intl.NumberFormat('es-AR', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(value);
+            // Usar función global de site.js
+            return window.formatPrice(value);
         }
     },
 
@@ -163,6 +169,5 @@
     }
 };
 
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = DetalleGrid;
-}
+// Exportar para uso global
+window.DetalleGrid = DetalleGrid;
